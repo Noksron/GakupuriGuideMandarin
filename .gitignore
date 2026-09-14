@@ -14,6 +14,9 @@ assets/crest/屏幕截图*.png
 assets/portrait/*.png
 
 # ── 杂项 ───────────────────────────────────────────────────
+# Claude 桌面版把发给你的截图落在这里，不是网站内容
+Claude outputs/
+
 ~$*.xlsx
 __pycache__/
 .DS_Store

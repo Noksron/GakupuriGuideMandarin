@@ -29,9 +29,14 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .rail.open{width:var(--rail-open);box-shadow:2px 0 18px rgba(11,20,40,.28)}
 @media (hover:hover) and (pointer:fine){ .rail:hover{width:var(--rail-open)} }
 
-.rail-top{display:flex;align-items:center;gap:10px;padding:16px 0 15px 16px;
+.rail-top{display:flex;align-items:center;gap:10px;width:100%;text-align:left;
+  color:#a9b6d1;padding:16px 0 15px 16px;
   border-bottom:1px solid rgba(255,255,255,.14);flex:0 0 auto}
 .rail-top .full{font-size:13.5px;letter-spacing:.1em;white-space:nowrap}
+.rail-top:hover{color:#fff;background:rgba(255,255,255,.06)}
+.rail-top[aria-current="true"]{color:#fff;background:rgba(255,255,255,.09)}
+.rail-top .ico{width:22px;height:22px;flex:0 0 auto;display:grid;place-items:center}
+.rail-top .ico svg{width:16px;height:16px;display:block}
 
 .roster{list-style:none;margin:0;padding:4px 0 6px;overflow-y:auto;flex:1 1 auto;scrollbar-width:thin}
 /* 学院：折叠标题行 */
@@ -93,17 +98,26 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 }
 #railToggle{position:absolute;right:0;top:0;width:var(--rail);height:52px;z-index:2}
 @media (hover:hover) and (pointer:fine){ #railToggle{display:none} }
+.rail.open #railToggle{display:none}
 .scrim{position:fixed;inset:0;background:rgba(11,20,40,.4);z-index:25;display:none}
 .scrim.on{display:block}
 
 /* ---------- 页面 ---------- */
 .shell{margin-left:var(--rail)}
-header{background:var(--ink);color:var(--paper);padding:24px 20px 22px;
-  background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 34px)}
+/* 页头：游戏背景图 + 一层由暖到冷的压暗，保证 logo 和文字还看得清 */
+header{background-color:var(--ink);color:var(--paper);padding:30px 20px 26px;
+  background-image:
+    linear-gradient(180deg,rgba(74,22,44,.52) 0%,rgba(22,35,61,.78) 58%,rgba(22,35,61,.95) 100%),
+    url("assets/ui/banner.webp");
+  background-size:auto,cover;
+  background-position:center,center 58%;
+  background-repeat:no-repeat}
+.logo{cursor:pointer}
 .wrap{max-width:880px;margin:0 auto}
 h1{margin:0;font-size:25px;letter-spacing:.06em}
 .logo{display:block;width:214px;max-width:70%;height:auto}
-.sub{margin:4px 0 0;color:#a9b6d1;font-size:13px;letter-spacing:.04em}
+.sub{margin:6px 0 0;color:#cfd6e6;font-size:13px;letter-spacing:.04em;
+  text-shadow:0 1px 3px rgba(10,16,32,.5)}
 .sub b{color:var(--paper);font-weight:600}
 main{max-width:880px;margin:0 auto;padding:0 20px 60px}
 
@@ -174,6 +188,37 @@ td.r{text-align:left;white-space:nowrap;background:var(--paper-2)}
 .p3{background:#cfd97a} .p2{background:#e0e5a4} .p1{background:#eef0d2}
 .n1{background:#f3dcd6} .n2{background:#e9c1b7} .n3{background:#dfa495}
 .hint{font-size:12.5px;color:var(--ink-2);margin:10px 0 0}
+
+/* ---------- 首页 ---------- */
+.intro{padding:26px 0 6px}
+.intro h2{margin:0 0 10px;font-size:21px;letter-spacing:.08em}
+.intro p{margin:0 0 10px;font-size:14px;color:var(--ink-2);line-height:1.8}
+.intro p b{color:var(--ink);font-weight:600}
+.stat{display:flex;flex-wrap:wrap;gap:8px 22px;padding:12px 0 16px;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  font-size:13px;color:var(--ink-2)}
+.stat b{font-size:19px;color:var(--lantern);font-weight:600;margin-right:5px;
+  font-variant-numeric:tabular-nums}
+.schools{display:grid;gap:14px;align-items:start;padding:20px 0 6px;
+  grid-template-columns:repeat(auto-fill,minmax(246px,1fr))}
+.scard{border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;background:var(--paper)}
+.scard-h{display:flex;align-items:center;gap:9px;margin:0;padding:9px 12px;
+  font-size:14px;font-weight:600;letter-spacing:.06em;
+  background-color:var(--sc,var(--ink));color:var(--sc-ink,var(--paper))}
+.scard-h .sc{width:24px;height:24px;font-size:12.5px}
+.scard-h .n{margin-left:auto;font-size:11.5px;font-weight:400;opacity:.8;letter-spacing:0}
+.scard ul{list-style:none;margin:0;padding:3px 0}
+.scard li+li{border-top:1px dotted var(--rule)}
+.scard li button{display:flex;align-items:center;gap:9px;width:100%;padding:7px 12px;text-align:left}
+.scard li button:hover{background:var(--paper-2)}
+.scard .av{width:26px;height:26px;flex:0 0 auto;border-radius:var(--radius);overflow:hidden;
+  background:var(--paper-2);display:grid;place-items:center;
+  font-family:"Songti SC",SimSun,serif;font-size:13px}
+.scard .av img{width:100%;height:100%;object-fit:cover;display:block}
+.scard .nm{flex:1 1 auto;font-size:14px}
+.scard .st{font-size:11.5px;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.scard li.cleared .st{color:#6d7a12;font-weight:600}
+.scard li.todo .nm,.scard li.todo .st{color:#9aa3b4}
 .empty{padding:46px 0 40px;text-align:center;color:var(--ink-2);font-size:14px}
 .empty b{display:block;font-size:16px;color:var(--ink);font-weight:600;margin-bottom:6px}
 footer{max-width:880px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-2);font-size:12.5px;border-top:1px solid var(--rule)}
@@ -191,7 +236,10 @@ footer{max-width:880px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-2);f
 
 <aside class="rail" id="rail">
   <button id="railToggle" aria-label="展开学院侧栏" aria-expanded="false"></button>
-  <div class="rail-top"><span class="full">选择角色</span></div>
+  <button class="rail-top" id="homeBtn" aria-current="true">
+    <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2 7.2 8 2.4l6 4.8V13a.9.9 0 0 1-.9.9H2.9A.9.9 0 0 1 2 13V7.2Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+    <span class="full">首页</span>
+  </button>
   <ul class="roster" id="roster"></ul>
   <div class="rail-foot"><button id="reset">清除全部进度</button></div>
 </aside>
@@ -205,6 +253,22 @@ footer{max-width:880px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-2);f
   </div></header>
 
   <main>
+
+    <section id="home" hidden>
+      <!-- ▼▼ 个人说明：改这一段就行，普通 HTML ▼▼ -->
+      <div class="intro">
+        <h2>关于这份攻略</h2>
+        <p>《网球王子 · 学园祭的王子们》的全角色攻略整理。按会期 <b>8/22 – 9/1</b> 逐日列出每个回合该去哪、选什么、能拿到什么，目标是 <b>全 CG 收集</b>。</p>
+        <p>数据来自我自己边打边记的表格，边整理边往上补。下面标「待补充」的就是还没进行具体核对的角色，我会尽量在9月份内更新完毕。</p>
+        <p>每条事件左边的方框可以勾选作为进度存储，进度只存在你自己的浏览器里，由于本页面采用本地存储，并没有进行服务器同步，所以无法做到多设备同时运行（或许等我本学期所有due全部忙完之后我会有心情进行修改，不过暂时来说确实是没有这个功夫，希望谅解）。发现错漏欢迎在仓库提 issue / 小红书留评，我会不定期上线修改。</p>
+      </div>
+      <!-- ▲▲ 个人说明到这里 ▲▲ -->
+
+      <div class="stat" id="homeStat"></div>
+      <div class="schools" id="homeSchools"></div>
+    </section>
+
+    <div id="charview">
     <section class="brief">
       <img class="portrait" id="cportrait" alt="" hidden>
       <h2 id="cname"></h2>
@@ -234,6 +298,7 @@ footer{max-width:880px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-2);f
     </details>
 
     <p class="hint" id="storeNote">带「分歧」的回合有差分，建议先存档再选。勾选进度保存在这台设备的浏览器里。</p>
+    </div><!-- /#charview -->
   </main>
 
   <footer>数据来自个人攻略表格，仅供参考。发现错漏欢迎在仓库提 issue / 小红书留评，我会不定期上线修改。</footer>
@@ -269,7 +334,7 @@ function schoolVars(s){
   return c ? `style="--sc:${c};--sc-ink:${inkOn(c)};--sc-deep:${deepen(c)}"` : "";
 }
 const KEY = "gakuensai.progress.v1";
-let cur = 0, filter = "all", openSchool = 0;
+let cur = 0, filter = "all", openSchool = 0, view = "home";
 /* 打平成一维，方便按序号切换；每项记住所属学院 */
 const CHARS = DATA.schools.flatMap(s => s.chars.map(c => ({...c, school: s.name})));
 
@@ -318,9 +383,10 @@ function weekday(md){
 /* ---------- 侧列 ---------- */
 function buildRoster(){
   let i = -1;
+  const onHome = view === "home";
   el("roster").innerHTML = DATA.schools.map((s, si) => {
     const open = si === openSchool;
-    const hasCur = s.chars.some((_, ci) => indexOfChar(si, ci) === cur);
+    const hasCur = !onHome && s.chars.some((_, ci) => indexOfChar(si, ci) === cur);
     const v = schoolVars(s);
     const head = `<li ${v}><button class="school-btn${hasCur ? " cur" : ""}" data-s="${si}" aria-expanded="${open}">
         <span class="sc">${esc(s.crest)}</span>
@@ -337,7 +403,7 @@ function buildRoster(){
              onerror="this.parentNode.className='ini';this.parentNode.textContent='${esc(label)}'"></span>`
         : `<span class="ini${label.length > 1 ? " ini2" : ""}">${esc(label)}</span>`;
       return `<li class="char ${todo ? "todo" : n===total ? "cleared" : ""}" ${v}>
-        <button data-i="${i}" aria-current="${i===cur}">
+        <button data-i="${i}" aria-current="${!onHome && i===cur}">
           ${badge}
           <span class="full">${esc(c.name)}</span>
           <span class="prog">${todo ? "待补充" : n===total ? "已通关" : n + "/" + total}</span>
@@ -363,6 +429,13 @@ function schoolOfIndex(i){
   return 0;
 }
 
+function goHome(){
+  view = "home"; closeRail(); buildRoster(); render(); window.scrollTo({top:0});
+}
+function goChar(i){
+  cur = i; view = "char"; closeRail(); buildRoster(); render(); window.scrollTo({top:0});
+}
+
 function closeRail(){
   el("rail").classList.remove("open");
   el("scrim").classList.remove("on");
@@ -374,6 +447,12 @@ el("railToggle").addEventListener("click", ()=>{
   el("railToggle").setAttribute("aria-expanded", open);
 });
 el("scrim").addEventListener("click", closeRail);
+el("homeBtn").addEventListener("click", goHome);
+document.querySelector(".logo")?.addEventListener("click", goHome);
+el("homeSchools").addEventListener("click", e=>{
+  const b = e.target.closest("button[data-i]"); if(!b) return;
+  goChar(+b.dataset.i);
+});
 el("roster").addEventListener("click", e=>{
   const sb = e.target.closest(".school-btn");
   if (sb){                                   // 点学院：展开/收起，不切角色
@@ -383,8 +462,7 @@ el("roster").addEventListener("click", e=>{
     return;
   }
   const b = e.target.closest("button"); if(!b) return;
-  cur = +b.dataset.i; closeRail(); buildRoster(); render();
-  window.scrollTo({top:0});
+  goChar(+b.dataset.i);
 });
 el("reset").addEventListener("click", ()=>{
   if (!confirm("清除所有角色的勾选进度？")) return;
@@ -399,7 +477,53 @@ function cellClass(v){
   return "";
 }
 
+/* 首页：横排学院卡，每张列出该校角色和整理情况 */
+function renderHome(){
+  let done = 0, total = 0, ready = 0;
+  for (const c of CHARS){
+    total += c.steps.length;
+    done += doneOf(c.id).size;
+    if (c.steps.length) ready++;
+  }
+  el("homeStat").innerHTML = `
+    <span><b>${ready}</b>/ ${CHARS.length} 位角色已整理</span>
+    <span><b>${done}</b>/ ${total} 条已勾选</span>
+    <span><b>${DATA.schools.length}</b>所学院</span>`;
+
+  let i = -1;
+  el("homeSchools").innerHTML = DATA.schools.map(s => {
+    const rows = s.chars.map(c => {
+      i++;
+      const n = doneOf(c.id).size, t = c.steps.length, label = c.ini || c.name[0];
+      const cls = !t ? "todo" : n === t ? "cleared" : "";
+      const av = c.img
+        ? `<span class="av"><img src="${esc(c.img)}" alt="" loading="lazy"
+             onerror="this.parentNode.textContent='${esc(label)}'"></span>`
+        : `<span class="av">${esc(label)}</span>`;
+      return `<li class="${cls}"><button data-i="${i}">
+          ${av}<span class="nm">${esc(c.name)}</span>
+          <span class="st">${!t ? "待补充" : n === t ? "已通关" : n + "/" + t}</span>
+        </button></li>`;
+    }).join("");
+    return `<section class="scard" ${schoolVars(s)}>
+        <h3 class="scard-h"><span class="sc">${esc(s.crest)}</span>${esc(s.name)}
+          <span class="n">${s.chars.length} 人</span></h3>
+        <ul>${rows}</ul>
+      </section>`;
+  }).join("");
+}
+
 function render(){
+  const home = view === "home";
+  el("home").hidden = !home;
+  el("charview").hidden = home;
+  el("homeBtn").setAttribute("aria-current", home);
+  if (home){
+    document.title = "学院祭的王子们 · 全角色攻略";
+    renderHome();
+    return;
+  }
+
   const c = CHARS[cur], done = doneOf(c.id);
   document.title = c.name + " · 学院祭的王子们全角色攻略";
   el("cname").textContent = c.name;
@@ -570,7 +694,7 @@ if (!store.ok) el("storeNote").textContent =
   "当前浏览器不允许本地存储（无痕模式或被拦截），勾选进度只在这次访问内有效。";
 
 openSchool = schoolOfIndex(cur);
-buildRoster(); render();
+buildRoster(); render();          /* 默认落在首页，view 初始就是 "home" */
 </script>
 </body>
 </html>
