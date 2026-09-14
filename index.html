@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>学院祭的王子们 · 青学全角色攻略</title>
+<style>
+:root{
+  --ink:#16233d; --ink-2:#5c6a85;
+  --paper:#fbfaf5; --paper-2:#f2efe6; --rule:#ddd8c9;
+  --lantern:#d1462f; --ball:#b7c832;
+  --dawn:#e7c6a0; --noon:#f0d267; --dusk:#e08a52; --night:#41538a;
+  --rail:56px; --rail-open:212px; --radius:3px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  font-size:15px;line-height:1.6}
+h1,h2{font-family:"Songti SC","Noto Serif SC","Source Han Serif SC",SimSun,serif;font-weight:600}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid var(--lantern);outline-offset:2px}
+
+/* ---------- 学院侧列 ---------- */
+.rail{position:fixed;inset:0 auto 0 0;width:var(--rail);z-index:30;
+  background:var(--ink);color:var(--paper);display:flex;flex-direction:column;
+  overflow:hidden;transition:width .22s ease;
+  box-shadow:1px 0 0 rgba(0,0,0,.2)}
+.rail.open{width:var(--rail-open);box-shadow:2px 0 18px rgba(11,20,40,.28)}
+@media (hover:hover) and (pointer:fine){ .rail:hover{width:var(--rail-open)} }
+
+.rail-top{display:flex;align-items:center;gap:10px;padding:14px 0 14px 15px;
+  border-bottom:1px solid rgba(255,255,255,.14);flex:0 0 auto}
+.crest{width:26px;height:26px;flex:0 0 auto;border:1.5px solid var(--paper);border-radius:50%;
+  display:grid;place-items:center;font-size:13px;font-family:"Songti SC",SimSun,serif}
+.rail-top .full{font-size:13.5px;letter-spacing:.1em;white-space:nowrap}
+
+.roster{list-style:none;margin:0;padding:4px 0 6px;overflow-y:auto;flex:1 1 auto;scrollbar-width:thin}
+.roster li.school{display:flex;align-items:center;gap:10px;padding:12px 0 5px 15px;color:#7f8fb0;
+  font-size:11.5px;letter-spacing:.12em}
+.roster li.school+li button{border-top:0}
+.sc{width:26px;height:26px;flex:0 0 auto;display:grid;place-items:center;font-size:12px;
+  font-family:"Songti SC",SimSun,serif;border:1px solid rgba(255,255,255,.22);border-radius:50%}
+.roster button{display:flex;align-items:center;gap:10px;width:100%;padding:9px 0 9px 15px;
+  border-left:3px solid transparent;margin-left:-3px;color:#a9b6d1;text-align:left}
+.roster button:hover{color:#fff;background:rgba(255,255,255,.06)}
+.roster button[aria-current="true"]{color:#fff;border-left-color:var(--lantern);background:rgba(255,255,255,.08)}
+.ini{width:26px;height:26px;flex:0 0 auto;display:grid;place-items:center;font-size:15px;
+  font-family:"Songti SC",SimSun,serif;border:1px solid rgba(255,255,255,.28);border-radius:var(--radius)}
+.ini2{font-size:10.5px;letter-spacing:-.02em}
+.roster button[aria-current="true"] .ini{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.roster .full{font-size:14px;white-space:nowrap;flex:1 1 auto}
+.prog{font-size:11px;color:#8595b5;font-variant-numeric:tabular-nums;padding-right:14px;white-space:nowrap}
+.roster li.cleared .prog{color:var(--ball)}
+.roster li.cleared .ini::after{content:"";position:absolute}
+.rail-foot{flex:0 0 auto;border-top:1px solid rgba(255,255,255,.14);padding:10px 0 12px 15px}
+.rail-foot button{font-size:12px;color:#8595b5;white-space:nowrap}
+.rail-foot button:hover{color:#fff}
+/* 折叠时隐藏文字 */
+.full,.prog,.rail-foot{opacity:0;transition:opacity .14s ease}
+.rail.open .full,.rail.open .prog,.rail.open .rail-foot{opacity:1}
+@media (hover:hover) and (pointer:fine){
+  .rail:hover .full,.rail:hover .prog,.rail:hover .rail-foot{opacity:1}
+}
+#railToggle{position:absolute;right:0;top:0;width:var(--rail);height:52px;z-index:2}
+@media (hover:hover) and (pointer:fine){ #railToggle{display:none} }
+.scrim{position:fixed;inset:0;background:rgba(11,20,40,.4);z-index:25;display:none}
+.scrim.on{display:block}
+
+/* ---------- 页面 ---------- */
+.shell{margin-left:var(--rail)}
+header{background:var(--ink);color:var(--paper);padding:24px 20px 22px;
+  background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 34px)}
+.wrap{max-width:880px;margin:0 auto}
+h1{margin:0;font-size:25px;letter-spacing:.06em}
+.sub{margin:4px 0 0;color:#a9b6d1;font-size:13px;letter-spacing:.04em}
+.sub b{color:var(--paper);font-weight:600}
+main{max-width:880px;margin:0 auto;padding:0 20px 60px}
+
+.brief{border-bottom:1px solid var(--rule);padding:22px 0 16px}
+.brief h2{margin:0;font-size:22px;letter-spacing:.08em}
+.meta{margin:6px 0 0;color:var(--ink-2);font-size:13.5px}
+.topics{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0;padding:0;list-style:none}
+.topics li{border:1px solid var(--rule);background:var(--paper-2);border-radius:var(--radius);padding:3px 9px;font-size:12.5px}
+
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:13px 0;
+  border-bottom:1px solid var(--rule);position:sticky;top:0;background:var(--paper);z-index:5}
+.chip{background:var(--paper-2);border:1px solid var(--rule);border-radius:999px;padding:4px 13px;font-size:13px}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.count{margin-left:auto;color:var(--ink-2);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+.day{display:grid;grid-template-columns:76px 1fr;border-bottom:1px solid var(--rule)}
+.day-label{padding:18px 0;border-right:1px solid var(--rule)}
+.day-label .d{font-size:21px;color:var(--lantern);font-variant-numeric:tabular-nums}
+.day-label .w{display:block;font-size:11.5px;color:var(--ink-2);margin-top:1px}
+.rows{padding:8px 0}
+.row{display:grid;grid-template-columns:22px 1fr;gap:10px;padding:10px 0 10px 14px;align-items:start}
+.row+.row{border-top:1px dotted var(--rule)}
+.row.done{opacity:.4}
+.tick{width:17px;height:17px;margin-top:4px;border:1px solid var(--ink-2);border-radius:var(--radius);
+  padding:0;line-height:1;color:transparent;font-size:12px}
+.row.done .tick{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.line1{display:flex;flex-wrap:wrap;gap:7px;align-items:center;font-size:12.5px;color:var(--ink-2)}
+.t{border-radius:var(--radius);padding:1px 7px;color:var(--ink);font-weight:600}
+.t-晨{background:var(--dawn)} .t-昼{background:var(--noon)}
+.t-夕{background:var(--dusk);color:#fff} .t-夜{background:var(--night);color:#fff}
+.t--{background:var(--paper-2)}
+.kind{border:1px solid var(--rule);border-radius:var(--radius);padding:1px 7px}
+.choice{margin:5px 0 0;font-size:15.5px}
+.choice.none{color:var(--ink-2);font-size:14px}
+.note{margin:3px 0 0;font-size:13px;color:var(--ink-2)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tag{font-size:11.5px;border-radius:var(--radius);padding:2px 8px;letter-spacing:.03em}
+.tag.cg{background:var(--ball);color:#2b3208;font-weight:600}
+.tag.game{border:1px solid var(--ball);color:#6d7a12}
+.tag.branch{background:var(--lantern);color:#fff}
+.tag.loose{border:1px dashed var(--ink-2);color:var(--ink-2)}
+
+details{border:1px solid var(--rule);border-radius:var(--radius);margin-top:22px;background:var(--paper-2)}
+summary{padding:11px 14px;cursor:pointer;font-size:14px;letter-spacing:.04em}
+summary::marker{color:var(--lantern)}
+.panel{padding:0 14px 16px;overflow-x:auto}
+table{border-collapse:collapse;font-size:13px;width:100%;min-width:560px;background:var(--paper)}
+th,td{border:1px solid var(--rule);padding:5px 7px;text-align:center;font-variant-numeric:tabular-nums}
+th{background:var(--paper-2);font-weight:600;white-space:nowrap}
+td.r{text-align:left;white-space:nowrap;background:var(--paper-2)}
+.p3{background:#cfd97a} .p2{background:#e0e5a4} .p1{background:#eef0d2}
+.n1{background:#f3dcd6} .n2{background:#e9c1b7} .n3{background:#dfa495}
+.hint{font-size:12.5px;color:var(--ink-2);margin:10px 0 0}
+footer{max-width:880px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-2);font-size:12.5px;border-top:1px solid var(--rule)}
+@media (max-width:600px){
+  .day{grid-template-columns:56px 1fr}
+  .day-label .d{font-size:18px}
+  .row{padding-left:10px}
+  h1{font-size:21px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<aside class="rail" id="rail">
+  <button id="railToggle" aria-label="展开学院侧栏" aria-expanded="false"></button>
+  <div class="rail-top"><span class="crest">祭</span><span class="full">选择角色</span></div>
+  <ul class="roster" id="roster"></ul>
+  <div class="rail-foot"><button id="reset">清除全部进度</button></div>
+</aside>
+<div class="scrim" id="scrim"></div>
+
+<div class="shell">
+  <header><div class="wrap">
+    <h1>学院祭的王子们</h1>
+    <p class="sub" id="sub">会期 <b>8/22 – 9/1</b></p>
+  </div></header>
+
+  <main>
+    <section class="brief">
+      <h2 id="cname"></h2>
+      <p class="meta" id="cmeta"></p>
+      <ul class="topics" id="ctopics"></ul>
+      <p class="note" id="ctip" style="margin-top:10px"></p>
+    </section>
+
+    <div class="tools" role="group" aria-label="筛选">
+      <button class="chip" data-f="all" aria-pressed="true">全部</button>
+      <button class="chip" data-f="cg" aria-pressed="false">CG</button>
+      <button class="chip" data-f="game" aria-pressed="false">小游戏</button>
+      <button class="chip" data-f="branch" aria-pressed="false">分歧点</button>
+      <button class="chip" data-f="todo" aria-pressed="false">未完成</button>
+      <span class="count" id="count"></span>
+    </div>
+
+    <div id="timeline"></div>
+    <div id="extra"></div>
+
+    <details id="affbox">
+      <summary>好感度区间 × 普通话题加成</summary>
+      <div class="panel">
+        <table id="afftable"></table>
+        <p class="hint">好感度 10 以下所有话题一律 +1。数值越高的话题越优先聊。</p>
+      </div>
+    </details>
+
+    <p class="hint" id="storeNote">带「分歧」的回合有差分，建议先存档再选。勾选进度保存在这台设备的浏览器里，刷新不会丢。</p>
+  </main>
+
+  <footer>数据来自个人攻略表格，仅供参考。发现错漏欢迎在仓库提 issue。</footer>
+</div>
+
+<script src="data.js"></script>
+<script>
+const WEEK = ["日","一","二","三","四","五","六"];
+const KEY = "gakuensai.progress.v1";
+let cur = 0, filter = "all";
+/* 打平成一维，方便按序号切换；每项记住所属学院 */
+const CHARS = DATA.schools.flatMap(s => s.chars.map(c => ({...c, school: s.name})));
+
+/* ---------- 进度存储：localStorage，不可用时退回内存 ---------- */
+const store = (() => {
+  let ok = true;
+  try { localStorage.setItem(KEY + ".t", "1"); localStorage.removeItem(KEY + ".t"); }
+  catch (e) { ok = false; }
+  let mem = {};
+  return {
+    ok,
+    load(){
+      if (!ok) return mem;
+      try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { return {}; }
+    },
+    save(v){
+      mem = v;
+      if (!ok) return;
+      try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {}
+    }
+  };
+})();
+let progress = store.load();          // { 角色id: [步骤序号, ...] }
+
+const el = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const doneOf = id => new Set(progress[id] || []);
+
+function toggleStep(id, i){
+  const set = doneOf(id);
+  set.has(i) ? set.delete(i) : set.add(i);
+  progress[id] = [...set].sort((a,b)=>a-b);
+  if (!progress[id].length) delete progress[id];
+  store.save(progress);
+}
+
+function weekday(md){
+  const [m,d] = md.split("/").map(Number);
+  return WEEK[new Date(2026, m-1, d).getDay()];
+}
+
+/* ---------- 侧列 ---------- */
+function buildRoster(){
+  let i = -1;
+  el("roster").innerHTML = DATA.schools.map(s => {
+    const head = `<li class="school"><span class="sc">${esc(s.crest)}</span>
+        <span class="full">${esc(s.name)}</span></li>`;
+    const rows = s.chars.map(c => {
+      i++;
+      const n = doneOf(c.id).size, total = c.steps.length;
+      return `<li class="${n===total ? "cleared" : ""}">
+        <button data-i="${i}" aria-current="${i===cur}">
+          <span class="ini${(c.ini || c.name[0]).length > 1 ? " ini2" : ""}">${esc(c.ini || c.name[0])}</span>
+          <span class="full">${esc(c.name)}</span>
+          <span class="prog">${n===total ? "已通关" : n + "/" + total}</span>
+        </button></li>`;
+    }).join("");
+    return head + rows;
+  }).join("");
+}
+
+function closeRail(){
+  el("rail").classList.remove("open");
+  el("scrim").classList.remove("on");
+  el("railToggle").setAttribute("aria-expanded","false");
+}
+el("railToggle").addEventListener("click", ()=>{
+  const open = el("rail").classList.toggle("open");
+  el("scrim").classList.toggle("on", open);
+  el("railToggle").setAttribute("aria-expanded", open);
+});
+el("scrim").addEventListener("click", closeRail);
+el("roster").addEventListener("click", e=>{
+  const b = e.target.closest("button"); if(!b) return;
+  cur = +b.dataset.i; closeRail(); buildRoster(); render();
+  window.scrollTo({top:0});
+});
+el("reset").addEventListener("click", ()=>{
+  if (!confirm("清除所有角色的勾选进度？")) return;
+  progress = {}; store.save(progress); buildRoster(); render();
+});
+
+/* ---------- 正文 ---------- */
+function cellClass(v){
+  if (typeof v !== "number") return "";
+  if (v >= 3) return "p3"; if (v === 2) return "p2"; if (v === 1) return "p1";
+  if (v === -1) return "n1"; if (v === -2) return "n2"; if (v <= -3) return "n3";
+  return "";
+}
+
+function render(){
+  const c = CHARS[cur], done = doneOf(c.id);
+  document.title = c.name + " · 学院祭的王子们攻略";
+  el("cname").textContent = c.name;
+  el("cmeta").textContent = c.school + "　嫉妒程度：" + (c.jealousy || "—");
+  el("ctopics").innerHTML = c.topics.map(t=>`<li>${esc(t)}</li>`).join("");
+  el("ctip").textContent = c.tip || "";
+  el("ctip").style.display = c.tip ? "" : "none";
+
+  const keep = s_i => {
+    const [s,i] = s_i;
+    if (filter === "cg") return s.cg;
+    if (filter === "game") return s.game;
+    if (filter === "branch") return s.branch;
+    if (filter === "todo") return !done.has(i);
+    return true;
+  };
+  const steps = c.steps.map((s,i)=>[s,i]).filter(keep);
+  el("count").textContent = `已完成 ${done.size} / ${c.steps.length}`;
+
+  const days = [];
+  steps.forEach(([s,i])=>{
+    const last = days[days.length-1];
+    if (last && last.date === s.date) last.items.push([s,i]);
+    else days.push({date:s.date, items:[[s,i]]});
+  });
+
+  el("timeline").innerHTML = days.map(d=>`
+    <section class="day">
+      <div class="day-label"><span class="d">${esc(d.date)}</span><span class="w">周${weekday(d.date)}</span></div>
+      <div class="rows">${d.items.map(([s,i])=>rowHTML(s,i,done)).join("")}</div>
+    </section>`).join("") ||
+    `<p class="hint" style="padding:26px 0">${filter==="todo" ? "这个角色的事件都勾完了。" : "没有符合条件的回合。"}</p>`;
+
+  el("extra").innerHTML = c.extra ? `
+    <details>
+      <summary>备用路线：${esc(c.extra.title)}</summary>
+      <div class="panel">
+        ${c.extra.rows.map(r=>`<p class="note" style="margin:8px 0">
+          <b style="color:var(--lantern)">${esc(r.date)}</b> ${esc(r.time)} ${esc(r.kind)}
+          ${r.place ? "· " + esc(r.place) : ""}<br>${esc(r.choice || "（无需选择）")}</p>`).join("")}
+      </div>
+    </details>` : "";
+
+  const a = c.affinity;
+  el("affbox").style.display = a.rows.length ? "" : "none";
+  el("afftable").innerHTML = a.rows.length ? `
+    <tr><th>好感度</th>${a.head.map(h=>`<th>${esc(h)}</th>`).join("")}</tr>
+    ${a.rows.map(r=>`<tr><td class="r">${esc(r.range)}</td>${
+      r.values.map(v=>`<td class="${cellClass(v)}">${v ?? ""}</td>`).join("")}</tr>`).join("")}` : "";
+}
+
+function rowHTML(s, i, done){
+  const isDone = done.has(i);
+  const tags = [
+    s.branch ? `<span class="tag branch">分歧 · 先存档</span>` : "",
+    s.cg ? `<span class="tag cg">${esc(s.gain || "CG")}</span>` : "",
+    s.game ? `<span class="tag game">小游戏</span>` : "",
+    s.loose ? `<span class="tag loose">日期不固定</span>` : "",
+    (!s.cg && s.gain) ? `<span class="tag game">${esc(s.gain)}</span>` : "",
+  ].filter(Boolean).join("");
+
+  return `<div class="row${isDone ? " done" : ""}">
+    <button class="tick" data-i="${i}" aria-pressed="${isDone}" aria-label="标记完成">✓</button>
+    <div>
+      <div class="line1">
+        <span class="t t-${esc(s.time)}">${esc(s.time === "-" ? "全天" : s.time)}</span>
+        <span class="kind">${esc(s.kind)}</span>
+        ${s.place ? `<span>${esc(s.place)}</span>` : ""}
+      </div>
+      ${s.choice ? `<p class="choice">「${esc(s.choice)}」</p>` : `<p class="choice none">无需选择</p>`}
+      ${s.note && !s.game ? `<p class="note">${esc(s.note)}</p>` : ""}
+      ${tags ? `<div class="tags">${tags}</div>` : ""}
+    </div>
+  </div>`;
+}
+
+el("timeline").addEventListener("click", e=>{
+  const b = e.target.closest(".tick"); if(!b) return;
+  toggleStep(CHARS[cur].id, +b.dataset.i);
+  buildRoster(); render();
+});
+document.querySelector(".tools").addEventListener("click", e=>{
+  const b = e.target.closest(".chip"); if(!b) return;
+  filter = b.dataset.f;
+  document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed", x===b));
+  render();
+});
+
+if (!store.ok) el("storeNote").textContent =
+  "当前浏览器不允许本地存储（无痕模式或被拦截），勾选进度只在这次访问内有效。";
+
+buildRoster(); render();
+</script>
+</body>
+</html>
