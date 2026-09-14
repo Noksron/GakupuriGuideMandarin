@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>学院祭的王子们 · 青学全角色攻略</title>
+<title>学院祭的王子们 · 全角色攻略</title>
 <style>
 :root{
   --ink:#16233d; --ink-2:#5c6a85;
@@ -36,11 +36,26 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .rail-top .full{font-size:13.5px;letter-spacing:.1em;white-space:nowrap}
 
 .roster{list-style:none;margin:0;padding:4px 0 6px;overflow-y:auto;flex:1 1 auto;scrollbar-width:thin}
-.roster li.school{display:flex;align-items:center;gap:10px;padding:12px 0 5px 15px;color:#7f8fb0;
-  font-size:11.5px;letter-spacing:.12em}
-.roster li.school+li button{border-top:0}
-.sc{width:26px;height:26px;flex:0 0 auto;display:grid;place-items:center;font-size:12px;
-  font-family:"Songti SC",SimSun,serif;border:1px solid rgba(255,255,255,.22);border-radius:50%}
+/* 学院：折叠标题行 */
+.school-btn{display:flex;align-items:center;gap:10px;width:100%;padding:12px 0 12px 15px;
+  background:rgba(255,255,255,.05);border-top:1px solid rgba(255,255,255,.09);
+  color:#c3cfe6;font-size:14px;letter-spacing:.08em}
+.school-btn:hover{background:rgba(255,255,255,.1);color:#fff}
+.school-btn[aria-expanded="true"]{color:#fff;background:rgba(255,255,255,.11)}
+.sc{width:28px;height:28px;flex:0 0 auto;display:grid;place-items:center;font-size:13.5px;
+  font-family:"Songti SC",SimSun,serif;border-radius:50%;
+  background:var(--paper);color:var(--ink)}
+.school-btn .chev{margin-left:auto;padding-right:13px;font-size:10px;color:#8595b5;
+  transition:transform .18s ease;display:inline-block}
+.school-btn[aria-expanded="true"] .chev{transform:rotate(90deg)}
+.school-btn.cur .sc{background:var(--lantern);color:#fff}
+/* 未展开侧栏时只露学院 */
+.rail:not(.open) .roster li.char{display:none}
+@media (hover:hover) and (pointer:fine){ .rail:hover .roster li.char{display:list-item} }
+/* 角色：缩进一级 */
+.roster li.char button{padding-left:26px;gap:9px}
+.roster li.char .ini{width:23px;height:23px;font-size:13.5px}
+.roster li.char .full{font-size:13.5px}
 .roster button{display:flex;align-items:center;gap:10px;width:100%;padding:9px 0 9px 15px;
   border-left:3px solid transparent;margin-left:-3px;color:#a9b6d1;text-align:left}
 .roster button:hover{color:#fff;background:rgba(255,255,255,.06)}
@@ -191,7 +206,7 @@ footer{max-width:880px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-2);f
 <script>
 const WEEK = ["日","一","二","三","四","五","六"];
 const KEY = "gakuensai.progress.v1";
-let cur = 0, filter = "all";
+let cur = 0, filter = "all", openSchool = 0;
 /* 打平成一维，方便按序号切换；每项记住所属学院 */
 const CHARS = DATA.schools.flatMap(s => s.chars.map(c => ({...c, school: s.name})));
 
@@ -236,21 +251,43 @@ function weekday(md){
 /* ---------- 侧列 ---------- */
 function buildRoster(){
   let i = -1;
-  el("roster").innerHTML = DATA.schools.map(s => {
-    const head = `<li class="school"><span class="sc">${esc(s.crest)}</span>
-        <span class="full">${esc(s.name)}</span></li>`;
+  el("roster").innerHTML = DATA.schools.map((s, si) => {
+    const open = si === openSchool;
+    const hasCur = s.chars.some((_, ci) => indexOfChar(si, ci) === cur);
+    const head = `<li><button class="school-btn${hasCur ? " cur" : ""}" data-s="${si}" aria-expanded="${open}">
+        <span class="sc">${esc(s.crest)}</span>
+        <span class="full">${esc(s.name)}</span>
+        <span class="chev full" aria-hidden="true">▸</span>
+      </button></li>`;
     const rows = s.chars.map(c => {
       i++;
-      const n = doneOf(c.id).size, total = c.steps.length;
-      return `<li class="${n===total ? "cleared" : ""}">
+      if (!open) return "";
+      const n = doneOf(c.id).size, total = c.steps.length, label = c.ini || c.name[0];
+      return `<li class="char ${n===total ? "cleared" : ""}">
         <button data-i="${i}" aria-current="${i===cur}">
-          <span class="ini${(c.ini || c.name[0]).length > 1 ? " ini2" : ""}">${esc(c.ini || c.name[0])}</span>
+          <span class="ini${label.length > 1 ? " ini2" : ""}">${esc(label)}</span>
           <span class="full">${esc(c.name)}</span>
           <span class="prog">${n===total ? "已通关" : n + "/" + total}</span>
         </button></li>`;
     }).join("");
     return head + rows;
   }).join("");
+}
+
+/* 第 si 个学院第 ci 个角色在打平数组里的序号 */
+function indexOfChar(si, ci){
+  let n = 0;
+  for (let k = 0; k < si; k++) n += DATA.schools[k].chars.length;
+  return n + ci;
+}
+
+function schoolOfIndex(i){
+  let n = 0;
+  for (let k = 0; k < DATA.schools.length; k++){
+    n += DATA.schools[k].chars.length;
+    if (i < n) return k;
+  }
+  return 0;
 }
 
 function closeRail(){
@@ -265,6 +302,13 @@ el("railToggle").addEventListener("click", ()=>{
 });
 el("scrim").addEventListener("click", closeRail);
 el("roster").addEventListener("click", e=>{
+  const sb = e.target.closest(".school-btn");
+  if (sb){                                   // 点学院：展开/收起，不切角色
+    const si = +sb.dataset.s;
+    openSchool = (openSchool === si) ? -1 : si;
+    buildRoster();
+    return;
+  }
   const b = e.target.closest("button"); if(!b) return;
   cur = +b.dataset.i; closeRail(); buildRoster(); render();
   window.scrollTo({top:0});
@@ -374,6 +418,7 @@ document.querySelector(".tools").addEventListener("click", e=>{
 if (!store.ok) el("storeNote").textContent =
   "当前浏览器不允许本地存储（无痕模式或被拦截），勾选进度只在这次访问内有效。";
 
+openSchool = schoolOfIndex(cur);
 buildRoster(); render();
 </script>
 </body>
