@@ -3,6 +3,7 @@ const DATA = {
   {
    "name": "青春学园",
    "crest": "青",
+   "color": "#595ccc",
    "chars": [
     {
      "name": "越前龙马",
@@ -332,7 +333,11 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/越前龙马.png",
+     "portrait": "assets/portrait/越前龙马.webp",
+     "todo": false,
+     "notes": []
     },
     {
      "name": "手塚国光",
@@ -623,7 +628,11 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/手塚国光.png",
+     "portrait": "assets/portrait/手塚国光.webp",
+     "todo": false,
+     "notes": []
     },
     {
      "name": "大石秀一郎",
@@ -914,7 +923,11 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/大石秀一郎.png",
+     "portrait": "assets/portrait/大石秀一郎.webp",
+     "todo": false,
+     "notes": []
     },
     {
      "name": "不二周助",
@@ -1231,7 +1244,11 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/不二周助.png",
+     "portrait": "assets/portrait/不二周助.webp",
+     "todo": false,
+     "notes": []
     },
     {
      "name": "菊丸英二",
@@ -1510,7 +1527,11 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/菊丸英二.png",
+     "portrait": "assets/portrait/菊丸英二.webp",
+     "todo": false,
+     "notes": []
     },
     {
      "name": "河村隆",
@@ -1813,7 +1834,11 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/河村隆.png",
+     "portrait": "assets/portrait/河村隆.webp",
+     "todo": false,
+     "notes": []
     },
     {
      "name": "乾贞治",
@@ -2104,7 +2129,11 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/乾贞治.png",
+     "portrait": "assets/portrait/乾贞治.webp",
+     "todo": false,
+     "notes": []
     },
     {
      "name": "桃城武",
@@ -2382,7 +2411,11 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/桃城武.png",
+     "portrait": "assets/portrait/桃城武.webp",
+     "todo": false,
+     "notes": []
     },
     {
      "name": "海堂熏",
@@ -2719,13 +2752,1811 @@ const DATA = {
         "choice": "企鹅乐园"
        }
       ]
-     }
+     },
+     "img": "assets/avatar/海堂熏.png",
+     "portrait": "assets/portrait/海堂熏.webp",
+     "todo": false,
+     "notes": []
+    }
+   ]
+  },
+  {
+   "name": "不动峰中学",
+   "crest": "峰",
+   "color": "#646464",
+   "chars": [
+    {
+     "name": "橘桔平",
+     "ini": "",
+     "id": "不动峰中学·橘桔平",
+     "topics": [
+      "和太鼓的话题 +6",
+      "练习和太鼓的话题 +7"
+     ],
+     "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“藏青色”可提升好感度+1",
+     "jealousy": "完全不嫉妒",
+     "steps": [
+      {
+       "date": "8/22",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "本馆-鬼屋",
+       "choice": "那我不问了",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/23",
+       "loose": false,
+       "time": "夕",
+       "kind": "对话",
+       "place": "本馆-仓库",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/24",
+       "loose": false,
+       "time": "晨",
+       "kind": "查看",
+       "place": "广场",
+       "choice": "",
+       "note": "",
+       "gain": "和太鼓的话题",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/24",
+       "loose": false,
+       "time": "夕",
+       "kind": "对话",
+       "place": "本馆-鬼屋",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/25",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "舞台",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/26",
+       "loose": false,
+       "time": "晨",
+       "kind": "查看",
+       "place": "舞台",
+       "choice": "",
+       "note": "",
+       "gain": "练习和太鼓的话题",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/26",
+       "loose": false,
+       "time": "夕",
+       "kind": "对话",
+       "place": "本馆-鬼屋",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/27",
+       "loose": false,
+       "time": "昼",
+       "kind": "查看",
+       "place": "广场",
+       "choice": "是",
+       "note": "小游戏",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": true
+      },
+      {
+       "date": "8/27",
+       "loose": false,
+       "time": "夜",
+       "kind": "约会",
+       "place": "",
+       "choice": "没有，没什么特别的安排",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/28",
+       "loose": false,
+       "time": "-",
+       "kind": "约会",
+       "place": "",
+       "choice": "嗯……感觉味道有点重呢。 → 没、没什么特别的安排",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/29",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "本馆-本馆道路",
+       "choice": "",
+       "note": "",
+       "gain": "剧情CG",
+       "branch": false,
+       "cg": true,
+       "game": false
+      },
+      {
+       "date": "8/29",
+       "loose": false,
+       "time": "夕",
+       "kind": "对话",
+       "place": "本馆-鬼屋",
+       "choice": "",
+       "note": "",
+       "gain": "剧情CG",
+       "branch": false,
+       "cg": true,
+       "game": false
+      },
+      {
+       "date": "8/30",
+       "loose": false,
+       "time": "晨",
+       "kind": "查看",
+       "place": "本馆-会议室",
+       "choice": "是",
+       "note": "小游戏",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": true
+      },
+      {
+       "date": "8/30",
+       "loose": false,
+       "time": "夜",
+       "kind": "约会",
+       "place": "",
+       "choice": "没有，没什么特别的安排",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/31",
+       "loose": false,
+       "time": "-",
+       "kind": "约会",
+       "place": "",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      }
+     ],
+     "affinity": {
+      "head": [
+       "学院祭",
+       "作业",
+       "天气",
+       "朋友",
+       "梦想",
+       "网球",
+       "书籍",
+       "音乐",
+       "游戏",
+       "时尚",
+       "食物",
+       "恋爱"
+      ],
+      "rows": [
+       {
+        "range": "11–30",
+        "values": [
+         3,
+         2,
+         1,
+         0,
+         0,
+         1,
+         2,
+         1,
+         0,
+         0,
+         3,
+         -2
+        ]
+       },
+       {
+        "range": "31–70",
+        "values": [
+         2,
+         2,
+         1,
+         1,
+         0,
+         3,
+         2,
+         2,
+         1,
+         1,
+         3,
+         2
+        ]
+       },
+       {
+        "range": "71–100",
+        "values": [
+         2,
+         1,
+         1,
+         2,
+         3,
+         3,
+         1,
+         2,
+         1,
+         2,
+         2,
+         4
+        ]
+       }
+      ]
+     },
+     "extra": null,
+     "img": "assets/avatar/橘桔平.png",
+     "portrait": "assets/portrait/橘桔平.webp",
+     "todo": false,
+     "notes": []
+    },
+    {
+     "name": "神尾アキラ",
+     "ini": "",
+     "id": "不动峰中学·神尾アキラ",
+     "topics": [
+      "速度的话题 +6",
+      "生日的话题 +6"
+     ],
+     "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“荧光黄绿色”可提升好感度+1",
+     "jealousy": "非常容易嫉妒",
+     "steps": [
+      {
+       "date": "8/22",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "室内网球场",
+       "choice": "很棒的台词哦。",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/23",
+       "loose": false,
+       "time": "夕",
+       "kind": "对话",
+       "place": "室内网球场",
+       "choice": "",
+       "note": "",
+       "gain": "速度的话题",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/24",
+       "loose": false,
+       "time": "昼",
+       "kind": "查看",
+       "place": "舞台",
+       "choice": "神尾アキラ",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/24",
+       "loose": false,
+       "time": "夕",
+       "kind": "对话",
+       "place": "本馆-鬼屋",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/25",
+       "loose": false,
+       "time": "晨",
+       "kind": "对话",
+       "place": "舞台",
+       "choice": "嗯！我参加！",
+       "note": "橘、神尾、伊武的亲密度均≥11→触发26日晨事件",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/25",
+       "loose": false,
+       "time": "夕",
+       "kind": "对话",
+       "place": "本馆-鬼屋",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/26",
+       "loose": false,
+       "time": "晨",
+       "kind": "对话",
+       "place": "本馆-食堂&小卖部",
+       "choice": "",
+       "note": "",
+       "gain": "生日的话题",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/26",
+       "loose": false,
+       "time": "昼",
+       "kind": "查看",
+       "place": "本馆-会议室",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/27",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "本馆-鬼屋",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/27",
+       "loose": false,
+       "time": "夜",
+       "kind": "约会",
+       "place": "",
+       "choice": "没，没有哦。",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/28",
+       "loose": false,
+       "time": "-",
+       "kind": "约会",
+       "place": "",
+       "choice": "嗯，没问题。",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/29",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "广场",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/29",
+       "loose": false,
+       "time": "夕",
+       "kind": "对话",
+       "place": "本馆-鬼屋",
+       "choice": "",
+       "note": "",
+       "gain": "剧情CG",
+       "branch": false,
+       "cg": true,
+       "game": false
+      },
+      {
+       "date": "8/30",
+       "loose": false,
+       "time": "昼",
+       "kind": "查看",
+       "place": "室内网球场",
+       "choice": "好的。",
+       "note": "小游戏",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": true
+      },
+      {
+       "date": "8/30",
+       "loose": false,
+       "time": "夜",
+       "kind": "约会",
+       "place": "",
+       "choice": "嗯，有空哦。",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/31",
+       "loose": false,
+       "time": "-",
+       "kind": "约会",
+       "place": "",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      }
+     ],
+     "affinity": {
+      "head": [
+       "学院祭",
+       "作业",
+       "天气",
+       "朋友",
+       "梦想",
+       "网球",
+       "书籍",
+       "音乐",
+       "游戏",
+       "时尚",
+       "食物",
+       "恋爱"
+      ],
+      "rows": [
+       {
+        "range": "11–30",
+        "values": [
+         2,
+         -2,
+         1,
+         0,
+         0,
+         2,
+         0,
+         2,
+         2,
+         1,
+         1,
+         1
+        ]
+       },
+       {
+        "range": "31–70",
+        "values": [
+         2,
+         -2,
+         1,
+         0,
+         0,
+         3,
+         1,
+         3,
+         2,
+         2,
+         2,
+         2
+        ]
+       },
+       {
+        "range": "71–100",
+        "values": [
+         2,
+         -1,
+         1,
+         3,
+         3,
+         2,
+         1,
+         3,
+         3,
+         1,
+         2,
+         4
+        ]
+       }
+      ]
+     },
+     "extra": null,
+     "img": "assets/avatar/神尾アキラ.png",
+     "portrait": "assets/portrait/神尾アキラ.webp",
+     "todo": false,
+     "notes": []
+    },
+    {
+     "name": "伊武深司",
+     "ini": "",
+     "id": "不动峰中学·伊武深司",
+     "topics": [
+      "13级阶梯的话题 +5",
+      "乐观主义的话题 +5"
+     ],
+     "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“灰色”可提升好感度+1",
+     "jealousy": "喜欢上的话就会很容易嫉妒",
+     "steps": [
+      {
+       "date": "8/22",
+       "loose": false,
+       "time": "晨",
+       "kind": "对话",
+       "place": "本馆-食堂&小卖部",
+       "choice": "玉子烧套餐",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/23",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "本馆-鬼屋",
+       "choice": "我没有讨厌你啊。",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/24",
+       "loose": false,
+       "time": "昼",
+       "kind": "查看",
+       "place": "舞台",
+       "choice": "伊武深司",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/25",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "本馆-鬼屋",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/26",
+       "loose": false,
+       "time": "晨",
+       "kind": "对话",
+       "place": "本馆-鬼屋",
+       "choice": "",
+       "note": "",
+       "gain": "13阶梯的话题",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/27",
+       "loose": false,
+       "time": "晨",
+       "kind": "查看",
+       "place": "本馆-鬼屋",
+       "choice": "是",
+       "note": "小游戏",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": true
+      },
+      {
+       "date": "8/27",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "本馆-鬼屋",
+       "choice": "",
+       "note": "",
+       "gain": "乐观主义的话题",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/27",
+       "loose": false,
+       "time": "夜",
+       "kind": "约会",
+       "place": "",
+       "choice": "嗯，有空哦",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/28",
+       "loose": false,
+       "time": "-",
+       "kind": "约会",
+       "place": "",
+       "choice": "",
+       "note": "",
+       "gain": "剧情CG",
+       "branch": false,
+       "cg": true,
+       "game": false
+      },
+      {
+       "date": "8/29",
+       "loose": false,
+       "time": "晨",
+       "kind": "查看",
+       "place": "室内网球场",
+       "choice": "是",
+       "note": "小游戏",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": true
+      },
+      {
+       "date": "8/29",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "舞台",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/30",
+       "loose": false,
+       "time": "夜",
+       "kind": "约会",
+       "place": "",
+       "choice": "没，没有哦",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/31",
+       "loose": false,
+       "time": "-",
+       "kind": "约会",
+       "place": "",
+       "choice": "要不要去哪逛逛？",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      }
+     ],
+     "affinity": {
+      "head": [
+       "学院祭",
+       "作业",
+       "天气",
+       "朋友",
+       "梦想",
+       "网球",
+       "书籍",
+       "音乐",
+       "游戏",
+       "时尚",
+       "食物",
+       "恋爱"
+      ],
+      "rows": [
+       {
+        "range": "11–30",
+        "values": [
+         2,
+         -1,
+         1,
+         0,
+         0,
+         3,
+         2,
+         2,
+         -2,
+         -2,
+         0,
+         -3
+        ]
+       },
+       {
+        "range": "31–70",
+        "values": [
+         2,
+         2,
+         1,
+         1,
+         2,
+         3,
+         2,
+         1,
+         -1,
+         -1,
+         1,
+         -2
+        ]
+       },
+       {
+        "range": "71–100",
+        "values": [
+         2,
+         2,
+         1,
+         0,
+         2,
+         3,
+         2,
+         1,
+         -1,
+         -1,
+         1,
+         2
+        ]
+       }
+      ]
+     },
+     "extra": null,
+     "img": "assets/avatar/伊武深司.png",
+     "portrait": "assets/portrait/伊武深司.webp",
+     "todo": false,
+     "notes": []
+    }
+   ]
+  },
+  {
+   "name": "圣鲁道夫学院",
+   "crest": "鲁",
+   "color": "#5e504b",
+   "chars": [
+    {
+     "name": "赤澤吉朗",
+     "ini": "",
+     "id": "圣鲁道夫学院·赤澤吉朗",
+     "topics": [
+      "新部长的话题 +7",
+      "信长剧的话题（仅可使用一次） +6"
+     ],
+     "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“红色”可提升好感度+1",
+     "jealousy": "有点嫉妒",
+     "steps": [
+      {
+       "date": "8/22",
+       "loose": false,
+       "time": "晨",
+       "kind": "查看",
+       "place": "本馆-会议室",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/22",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "本馆-鲁道夫咖啡厅",
+       "choice": "",
+       "note": "",
+       "gain": "新部长的话题",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/23",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "广场",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/24",
+       "loose": false,
+       "time": "晨",
+       "kind": "查看",
+       "place": "舞台",
+       "choice": "",
+       "note": "",
+       "gain": "信长剧的话题",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/24",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "本馆-鲁道夫咖啡厅",
+       "choice": "",
+       "note": "在8月24日晨之前前往本馆-仓库并选择查看选项触发该事件",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/25",
+       "loose": false,
+       "time": "晨",
+       "kind": "查看",
+       "place": "室内网球场",
+       "choice": "好的",
+       "note": "小游戏",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": true
+      },
+      {
+       "date": "8/25",
+       "loose": false,
+       "time": "昼",
+       "kind": "查看",
+       "place": "舞台",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/26",
+       "loose": false,
+       "time": "晨",
+       "kind": "对话",
+       "place": "室内网球场",
+       "choice": "",
+       "note": "",
+       "gain": "剧情CG",
+       "branch": false,
+       "cg": true,
+       "game": false
+      },
+      {
+       "date": "8/27",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "舞台",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/27",
+       "loose": false,
+       "time": "夜",
+       "kind": "约会",
+       "place": "",
+       "choice": "不，没有什么特别的安排。",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/28",
+       "loose": false,
+       "time": "-",
+       "kind": "约会",
+       "place": "",
+       "choice": "好的，可以哦。",
+       "note": "",
+       "gain": "剧情CG",
+       "branch": false,
+       "cg": true,
+       "game": false
+      },
+      {
+       "date": "8/29",
+       "loose": false,
+       "time": "晨",
+       "kind": "对话",
+       "place": "广场",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/30",
+       "loose": false,
+       "time": "晨",
+       "kind": "查看",
+       "place": "广场",
+       "choice": "",
+       "note": "小游戏",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": true
+      },
+      {
+       "date": "8/30",
+       "loose": false,
+       "time": "夜",
+       "kind": "约会",
+       "place": "",
+       "choice": "不，没有什么特别的安排。",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/31",
+       "loose": false,
+       "time": "-",
+       "kind": "约会",
+       "place": "",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      }
+     ],
+     "affinity": {
+      "head": [
+       "学院祭",
+       "作业",
+       "天气",
+       "朋友",
+       "梦想",
+       "网球",
+       "书籍",
+       "音乐",
+       "游戏",
+       "时尚",
+       "食物",
+       "恋爱"
+      ],
+      "rows": [
+       {
+        "range": "11–30",
+        "values": [
+         2,
+         -2,
+         1,
+         1,
+         0,
+         2,
+         -1,
+         0,
+         0,
+         0,
+         2,
+         -2
+        ]
+       },
+       {
+        "range": "31–70",
+        "values": [
+         2,
+         -3,
+         1,
+         2,
+         1,
+         2,
+         2,
+         0,
+         0,
+         1,
+         3,
+         2
+        ]
+       },
+       {
+        "range": "71–100",
+        "values": [
+         1,
+         1,
+         1,
+         0,
+         3,
+         3,
+         0,
+         1,
+         1,
+         2,
+         2,
+         4
+        ]
+       }
+      ]
+     },
+     "extra": null,
+     "img": "assets/avatar/赤澤吉朗.png",
+     "portrait": "assets/portrait/赤澤吉朗.webp",
+     "todo": false,
+     "notes": []
+    },
+    {
+     "name": "観月はじめ",
+     "ini": "",
+     "id": "圣鲁道夫学院·観月はじめ",
+     "topics": [
+      "信长剧的话题（仅可使用一次） +6",
+      "剧本的话题 +7"
+     ],
+     "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“白色”可提升好感度+1",
+     "jealousy": "超级嫉妒",
+     "steps": [
+      {
+       "date": "8/22",
+       "loose": false,
+       "time": "晨",
+       "kind": "对话",
+       "place": "本馆-会议室",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/24",
+       "loose": false,
+       "time": "晨",
+       "kind": "查看",
+       "place": "舞台",
+       "choice": "",
+       "note": "",
+       "gain": "信长剧的话题",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/24",
+       "loose": false,
+       "time": "夕",
+       "kind": "对话",
+       "place": "室内网球场",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/25",
+       "loose": false,
+       "time": "昼",
+       "kind": "查看",
+       "place": "舞台",
+       "choice": "",
+       "note": "",
+       "gain": "剧本的话题",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/25",
+       "loose": false,
+       "time": "夕",
+       "kind": "查看",
+       "place": "广场",
+       "choice": "（好，就这么决定了！）",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/26",
+       "loose": false,
+       "time": "昼",
+       "kind": "自动",
+       "place": "本馆-本馆通道",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/26",
+       "loose": false,
+       "time": "昼",
+       "kind": "查看",
+       "place": "本馆-鲁道夫咖啡店",
+       "choice": "好的",
+       "note": "小游戏",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": true
+      },
+      {
+       "date": "8/26",
+       "loose": false,
+       "time": "夕",
+       "kind": "自动",
+       "place": "本馆-会议室",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/27",
+       "loose": false,
+       "time": "晨",
+       "kind": "自动",
+       "place": "本馆-会议室",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/27",
+       "loose": false,
+       "time": "昼",
+       "kind": "查看",
+       "place": "本馆-鲁道夫咖啡店",
+       "choice": "",
+       "note": "",
+       "gain": "剧情CG",
+       "branch": false,
+       "cg": true,
+       "game": false
+      },
+      {
+       "date": "8/27",
+       "loose": false,
+       "time": "夕",
+       "kind": "查看",
+       "place": "广场",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/27",
+       "loose": false,
+       "time": "夜",
+       "kind": "约会",
+       "place": "",
+       "choice": "不，没有什么特别的安排。",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/28",
+       "loose": false,
+       "time": "-",
+       "kind": "约会",
+       "place": "",
+       "choice": "我可以和你一起去吗？ → 科学书",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/29",
+       "loose": false,
+       "time": "夕",
+       "kind": "对话",
+       "place": "舞台",
+       "choice": "",
+       "note": "",
+       "gain": "剧情CG",
+       "branch": false,
+       "cg": true,
+       "game": false
+      },
+      {
+       "date": "8/30",
+       "loose": false,
+       "time": "昼",
+       "kind": "查看",
+       "place": "本馆-会议室",
+       "choice": "好的",
+       "note": "小游戏",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": true
+      },
+      {
+       "date": "8/30",
+       "loose": false,
+       "time": "夜",
+       "kind": "约会",
+       "place": "",
+       "choice": "不，没有什么特别的安排。",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/31",
+       "loose": false,
+       "time": "-",
+       "kind": "约会",
+       "place": "",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      }
+     ],
+     "affinity": {
+      "head": [
+       "学院祭",
+       "作业",
+       "天气",
+       "朋友",
+       "梦想",
+       "网球",
+       "书籍",
+       "音乐",
+       "游戏",
+       "时尚",
+       "食物",
+       "恋爱"
+      ],
+      "rows": [
+       {
+        "range": "11–30",
+        "values": [
+         3,
+         2,
+         1,
+         0,
+         0,
+         2,
+         -1,
+         -3,
+         -2,
+         -1,
+         -1,
+         -3
+        ]
+       },
+       {
+        "range": "31–70",
+        "values": [
+         3,
+         3,
+         1,
+         0,
+         2,
+         2,
+         2,
+         -2,
+         -1,
+         0,
+         2,
+         2
+        ]
+       },
+       {
+        "range": "71–100",
+        "values": [
+         3,
+         3,
+         1,
+         2,
+         3,
+         2,
+         2,
+         1,
+         0,
+         2,
+         3,
+         4
+        ]
+       }
+      ]
+     },
+     "extra": null,
+     "img": "assets/avatar/観月はじめ.png",
+     "portrait": "assets/portrait/観月はじめ.webp",
+     "todo": false,
+     "notes": []
+    },
+    {
+     "name": "不二裕太",
+     "ini": "裕",
+     "id": "圣鲁道夫学院·不二裕太",
+     "topics": [
+      "哈姆雷特角色的话题 +6",
+      "哈姆雷特剧的话题 +7"
+     ],
+     "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“银蓝色”可提升好感度+1",
+     "jealousy": "超级嫉妒",
+     "steps": [
+      {
+       "date": "8/22",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "广场",
+       "choice": "放心吧，我不会说出去的。",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/23",
+       "loose": false,
+       "time": "晨",
+       "kind": "对话",
+       "place": "广场",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/23",
+       "loose": false,
+       "time": "昼",
+       "kind": "对话",
+       "place": "室内网球场",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/23",
+       "loose": false,
+       "time": "夕",
+       "kind": "查看",
+       "place": "舞台",
+       "choice": "",
+       "note": "",
+       "gain": "哈姆雷特角色的话题",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/24",
+       "loose": false,
+       "time": "晨",
+       "kind": "自动发生",
+       "place": "本馆-鲁道夫咖啡店",
+       "choice": "好，就去问问看！",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/24",
+       "loose": false,
+       "time": "晨",
+       "kind": "对话",
+       "place": "广场",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/24",
+       "loose": false,
+       "time": "夕",
+       "kind": "查看",
+       "place": "舞台",
+       "choice": "",
+       "note": "",
+       "gain": "哈姆雷特剧的话题",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/25",
+       "loose": false,
+       "time": "昼",
+       "kind": "查看",
+       "place": "本馆-鲁道夫咖啡店",
+       "choice": "是",
+       "note": "小游戏",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": true
+      },
+      {
+       "date": "8/26",
+       "loose": false,
+       "time": "夕",
+       "kind": "对话",
+       "place": "本馆-鲁道夫咖啡店",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/27",
+       "loose": false,
+       "time": "夜",
+       "kind": "约会",
+       "place": "",
+       "choice": "没有哦",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/28",
+       "loose": false,
+       "time": "-",
+       "kind": "约会",
+       "place": "",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/29",
+       "loose": false,
+       "time": "晨",
+       "kind": "自动发生",
+       "place": "本馆-本馆道路",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/29",
+       "loose": false,
+       "time": "晨",
+       "kind": "查看",
+       "place": "本馆-鲁道夫咖啡店",
+       "choice": "是",
+       "note": "小游戏",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": true
+      },
+      {
+       "date": "8/30",
+       "loose": false,
+       "time": "昼",
+       "kind": "自动发生",
+       "place": "广场",
+       "choice": "",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/30",
+       "loose": false,
+       "time": "夜",
+       "kind": "约会",
+       "place": "",
+       "choice": "嗯，有空哦",
+       "note": "",
+       "gain": "",
+       "branch": false,
+       "cg": false,
+       "game": false
+      },
+      {
+       "date": "8/31",
+       "loose": false,
+       "time": "-",
+       "kind": "约会",
+       "place": "",
+       "choice": "",
+       "note": "",
+       "gain": "剧情CG",
+       "branch": false,
+       "cg": true,
+       "game": false
+      }
+     ],
+     "affinity": {
+      "head": [
+       "学院祭",
+       "作业",
+       "天气",
+       "朋友",
+       "梦想",
+       "网球",
+       "书籍",
+       "音乐",
+       "游戏",
+       "时尚",
+       "食物",
+       "恋爱"
+      ],
+      "rows": [
+       {
+        "range": "11–30",
+        "values": [
+         2,
+         -3,
+         1,
+         0,
+         0,
+         2,
+         -2,
+         -2,
+         3,
+         -2,
+         2,
+         -2
+        ]
+       },
+       {
+        "range": "31–70",
+        "values": [
+         3,
+         -2,
+         1,
+         1,
+         1,
+         3,
+         -1,
+         -2,
+         3,
+         0,
+         1,
+         0
+        ]
+       },
+       {
+        "range": "71–100",
+        "values": [
+         3,
+         -2,
+         1,
+         3,
+         3,
+         3,
+         0,
+         1,
+         2,
+         1,
+         2,
+         4
+        ]
+       }
+      ]
+     },
+     "extra": null,
+     "img": "assets/avatar/不二裕太.png",
+     "portrait": "assets/portrait/不二裕太.webp",
+     "todo": false,
+     "notes": []
+    }
+   ]
+  },
+  {
+   "name": "山吹中学",
+   "crest": "吹",
+   "color": "#5c8161",
+   "chars": [
+    {
+     "name": "亚久津仁",
+     "ini": "",
+     "img": "assets/avatar/亚久津仁.png",
+     "portrait": "assets/portrait/亚久津仁.webp",
+     "id": "山吹中学·亚久津仁",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
+     "affinity": {
+      "head": [],
+      "rows": []
+     },
+     "extra": null,
+     "todo": true,
+     "notes": []
+    },
+    {
+     "name": "千石清纯",
+     "ini": "",
+     "img": "assets/avatar/千石清纯.png",
+     "portrait": "assets/portrait/千石清纯.webp",
+     "id": "山吹中学·千石清纯",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
+     "affinity": {
+      "head": [],
+      "rows": []
+     },
+     "extra": null,
+     "todo": true,
+     "notes": []
+    },
+    {
+     "name": "坛太一",
+     "ini": "",
+     "img": "assets/avatar/坛太一.png",
+     "portrait": "assets/portrait/坛太一.webp",
+     "id": "山吹中学·坛太一",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
+     "affinity": {
+      "head": [],
+      "rows": []
+     },
+     "extra": null,
+     "todo": true,
+     "notes": []
     }
    ]
   },
   {
    "name": "冰帝学园",
    "crest": "冰",
+   "color": "#587d95",
    "chars": [
     {
      "name": "迹部景吾",
@@ -2735,7 +4566,7 @@ const DATA = {
       "咖啡厅的话题 +6",
       "纳豆的话题 +6"
      ],
-     "tip": "好感度71以上时使用“时尚的话题”→ 获得cg",
+     "tip": "好感度71以上时使用“时尚的话题”→ 获得CG",
      "jealousy": "喜欢上的话就会很容易嫉妒",
      "steps": [
       {
@@ -3068,7 +4899,13 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/迹部景吾.png",
+     "portrait": "assets/portrait/迹部景吾.webp",
+     "todo": false,
+     "notes": [
+      "奖励CG为「学院祭扣杀BINGO」中概率获得"
+     ]
     },
     {
      "name": "忍足侑士",
@@ -3373,7 +5210,13 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/忍足侑士.png",
+     "portrait": "assets/portrait/忍足侑士.webp",
+     "todo": false,
+     "notes": [
+      "奖励CG为「学院祭扣杀BINGO」中概率获得"
+     ]
     },
     {
      "name": "向日岳人",
@@ -3638,7 +5481,11 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/向日岳人.png",
+     "portrait": "assets/portrait/向日岳人.webp",
+     "todo": false,
+     "notes": []
     },
     {
      "name": "凤长太郎",
@@ -3929,7 +5776,11 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/凤长太郎.png",
+     "portrait": "assets/portrait/凤长太郎.webp",
+     "todo": false,
+     "notes": []
     },
     {
      "name": "宍户亮",
@@ -4234,7 +6085,11 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/宍户亮.png",
+     "portrait": "assets/portrait/宍户亮.webp",
+     "todo": false,
+     "notes": []
     },
     {
      "name": "日吉若",
@@ -4525,7 +6380,11 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/日吉若.png",
+     "portrait": "assets/portrait/日吉若.webp",
+     "todo": false,
+     "notes": []
     },
     {
      "name": "芥川慈郎",
@@ -4803,1713 +6662,266 @@ const DATA = {
        }
       ]
      },
-     "extra": null
+     "extra": null,
+     "img": "assets/avatar/芥川慈郎.png",
+     "portrait": "assets/portrait/芥川慈郎.webp",
+     "todo": false,
+     "notes": []
     }
    ]
   },
   {
-   "name": "圣鲁道夫学院",
-   "crest": "鲁",
+   "name": "六角中学",
+   "crest": "六",
+   "color": "#804749",
    "chars": [
     {
-     "name": "赤澤吉朗",
+     "name": "天根光",
      "ini": "",
-     "id": "圣鲁道夫学院·赤澤吉朗",
-     "topics": [
-      "新部长的话题 +7",
-      "信长剧的话题（仅可使用一次） +6"
-     ],
-     "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“红色”可提升好感度+1",
-     "jealousy": "有点嫉妒",
-     "steps": [
-      {
-       "date": "8/22",
-       "loose": false,
-       "time": "晨",
-       "kind": "查看",
-       "place": "本馆-会议室",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/22",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "本馆-鲁道夫咖啡厅",
-       "choice": "",
-       "note": "",
-       "gain": "新部长的话题",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/23",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "广场",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/24",
-       "loose": false,
-       "time": "晨",
-       "kind": "查看",
-       "place": "舞台",
-       "choice": "",
-       "note": "",
-       "gain": "信长剧的话题",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/24",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "本馆-鲁道夫咖啡厅",
-       "choice": "",
-       "note": "在8月24日晨之前前往本馆-仓库并选择查看选项触发该事件",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/25",
-       "loose": false,
-       "time": "晨",
-       "kind": "查看",
-       "place": "室内网球场",
-       "choice": "好的",
-       "note": "小游戏",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": true
-      },
-      {
-       "date": "8/25",
-       "loose": false,
-       "time": "昼",
-       "kind": "查看",
-       "place": "舞台",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/26",
-       "loose": false,
-       "time": "晨",
-       "kind": "对话",
-       "place": "室内网球场",
-       "choice": "",
-       "note": "",
-       "gain": "剧情CG",
-       "branch": false,
-       "cg": true,
-       "game": false
-      },
-      {
-       "date": "8/27",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "舞台",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/27",
-       "loose": false,
-       "time": "夜",
-       "kind": "约会",
-       "place": "",
-       "choice": "不，没有什么特别的安排。",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/28",
-       "loose": false,
-       "time": "-",
-       "kind": "约会",
-       "place": "",
-       "choice": "好的，可以哦。",
-       "note": "",
-       "gain": "剧情CG",
-       "branch": false,
-       "cg": true,
-       "game": false
-      },
-      {
-       "date": "8/29",
-       "loose": false,
-       "time": "晨",
-       "kind": "对话",
-       "place": "广场",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/30",
-       "loose": false,
-       "time": "晨",
-       "kind": "查看",
-       "place": "广场",
-       "choice": "",
-       "note": "小游戏",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": true
-      },
-      {
-       "date": "8/30",
-       "loose": false,
-       "time": "夜",
-       "kind": "约会",
-       "place": "",
-       "choice": "不，没有什么特别的安排。",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/31",
-       "loose": false,
-       "time": "-",
-       "kind": "约会",
-       "place": "",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      }
-     ],
+     "img": "assets/avatar/天根光.png",
+     "portrait": "assets/portrait/天根光.webp",
+     "id": "六角中学·天根光",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
      "affinity": {
-      "head": [
-       "学院祭",
-       "作业",
-       "天气",
-       "朋友",
-       "梦想",
-       "网球",
-       "书籍",
-       "音乐",
-       "游戏",
-       "时尚",
-       "食物",
-       "恋爱"
-      ],
-      "rows": [
-       {
-        "range": "11–30",
-        "values": [
-         2,
-         -2,
-         1,
-         1,
-         0,
-         2,
-         -1,
-         0,
-         0,
-         0,
-         2,
-         -2
-        ]
-       },
-       {
-        "range": "31–70",
-        "values": [
-         2,
-         -3,
-         1,
-         2,
-         1,
-         2,
-         2,
-         0,
-         0,
-         1,
-         3,
-         2
-        ]
-       },
-       {
-        "range": "71–100",
-        "values": [
-         1,
-         1,
-         1,
-         0,
-         3,
-         3,
-         0,
-         1,
-         1,
-         2,
-         2,
-         4
-        ]
-       }
-      ]
+      "head": [],
+      "rows": []
      },
-     "extra": null
+     "extra": null,
+     "todo": true,
+     "notes": []
     },
     {
-     "name": "観月はじめ",
+     "name": "佐伯虎次郎",
      "ini": "",
-     "id": "圣鲁道夫学院·観月はじめ",
-     "topics": [
-      "信长剧的话题（仅可使用一次） +6",
-      "剧本的话题 +7"
-     ],
-     "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“白色”可提升好感度+1",
-     "jealousy": "超级嫉妒",
-     "steps": [
-      {
-       "date": "8/22",
-       "loose": false,
-       "time": "晨",
-       "kind": "对话",
-       "place": "本馆-会议室",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/24",
-       "loose": false,
-       "time": "晨",
-       "kind": "查看",
-       "place": "舞台",
-       "choice": "",
-       "note": "",
-       "gain": "信长剧的话题",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/24",
-       "loose": false,
-       "time": "夕",
-       "kind": "对话",
-       "place": "室内网球场",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/25",
-       "loose": false,
-       "time": "昼",
-       "kind": "查看",
-       "place": "舞台",
-       "choice": "",
-       "note": "",
-       "gain": "剧本的话题",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/25",
-       "loose": false,
-       "time": "夕",
-       "kind": "查看",
-       "place": "广场",
-       "choice": "（好，就这么决定了！）",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/26",
-       "loose": false,
-       "time": "昼",
-       "kind": "自动",
-       "place": "本馆-本馆通道",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/26",
-       "loose": false,
-       "time": "昼",
-       "kind": "查看",
-       "place": "本馆-鲁道夫咖啡店",
-       "choice": "好的",
-       "note": "小游戏",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": true
-      },
-      {
-       "date": "8/26",
-       "loose": false,
-       "time": "夕",
-       "kind": "自动",
-       "place": "本馆-会议室",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/27",
-       "loose": false,
-       "time": "晨",
-       "kind": "自动",
-       "place": "本馆-会议室",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/27",
-       "loose": false,
-       "time": "昼",
-       "kind": "查看",
-       "place": "本馆-鲁道夫咖啡店",
-       "choice": "",
-       "note": "",
-       "gain": "剧情CG",
-       "branch": false,
-       "cg": true,
-       "game": false
-      },
-      {
-       "date": "8/27",
-       "loose": false,
-       "time": "夕",
-       "kind": "查看",
-       "place": "广场",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/27",
-       "loose": false,
-       "time": "夜",
-       "kind": "约会",
-       "place": "",
-       "choice": "不，没有什么特别的安排。",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/28",
-       "loose": false,
-       "time": "-",
-       "kind": "约会",
-       "place": "",
-       "choice": "我可以和你一起去吗？ → 科学书",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/29",
-       "loose": false,
-       "time": "夕",
-       "kind": "对话",
-       "place": "舞台",
-       "choice": "",
-       "note": "",
-       "gain": "剧情CG",
-       "branch": false,
-       "cg": true,
-       "game": false
-      },
-      {
-       "date": "8/30",
-       "loose": false,
-       "time": "昼",
-       "kind": "查看",
-       "place": "本馆-会议室",
-       "choice": "好的",
-       "note": "小游戏",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": true
-      },
-      {
-       "date": "8/30",
-       "loose": false,
-       "time": "夜",
-       "kind": "约会",
-       "place": "",
-       "choice": "不，没有什么特别的安排。",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/31",
-       "loose": false,
-       "time": "-",
-       "kind": "约会",
-       "place": "",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      }
-     ],
+     "img": "assets/avatar/佐伯虎次郎.png",
+     "portrait": "assets/portrait/佐伯虎次郎.webp",
+     "id": "六角中学·佐伯虎次郎",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
      "affinity": {
-      "head": [
-       "学院祭",
-       "作业",
-       "天气",
-       "朋友",
-       "梦想",
-       "网球",
-       "书籍",
-       "音乐",
-       "游戏",
-       "时尚",
-       "食物",
-       "恋爱"
-      ],
-      "rows": [
-       {
-        "range": "11–30",
-        "values": [
-         3,
-         2,
-         1,
-         0,
-         0,
-         2,
-         -1,
-         -3,
-         -2,
-         -1,
-         -1,
-         -3
-        ]
-       },
-       {
-        "range": "31–70",
-        "values": [
-         3,
-         3,
-         1,
-         0,
-         2,
-         2,
-         2,
-         -2,
-         -1,
-         0,
-         2,
-         2
-        ]
-       },
-       {
-        "range": "71–100",
-        "values": [
-         3,
-         3,
-         1,
-         2,
-         3,
-         2,
-         2,
-         1,
-         0,
-         2,
-         3,
-         4
-        ]
-       }
-      ]
+      "head": [],
+      "rows": []
      },
-     "extra": null
+     "extra": null,
+     "todo": true,
+     "notes": []
     },
     {
-     "name": "不二裕太",
-     "ini": "裕太",
-     "id": "圣鲁道夫学院·不二裕太",
-     "topics": [
-      "哈姆雷特角色的话题 +6",
-      "哈姆雷特剧的话题 +7"
-     ],
-     "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“银蓝色”可提升好感度+1",
-     "jealousy": "超级嫉妒",
-     "steps": [
-      {
-       "date": "8/22",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "广场",
-       "choice": "放心吧，我不会说出去的。",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/23",
-       "loose": false,
-       "time": "晨",
-       "kind": "对话",
-       "place": "广场",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/23",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "室内网球场",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/23",
-       "loose": false,
-       "time": "夕",
-       "kind": "查看",
-       "place": "舞台",
-       "choice": "",
-       "note": "",
-       "gain": "哈姆雷特角色的话题",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/24",
-       "loose": false,
-       "time": "晨",
-       "kind": "自动发生",
-       "place": "本馆-鲁道夫咖啡店",
-       "choice": "好，就去问问看！",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/24",
-       "loose": false,
-       "time": "晨",
-       "kind": "对话",
-       "place": "广场",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/24",
-       "loose": false,
-       "time": "夕",
-       "kind": "查看",
-       "place": "舞台",
-       "choice": "",
-       "note": "",
-       "gain": "哈姆雷特剧的话题",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/25",
-       "loose": false,
-       "time": "昼",
-       "kind": "查看",
-       "place": "本馆-鲁道夫咖啡店",
-       "choice": "是",
-       "note": "小游戏",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": true
-      },
-      {
-       "date": "8/26",
-       "loose": false,
-       "time": "夕",
-       "kind": "对话",
-       "place": "本馆-鲁道夫咖啡店",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/27",
-       "loose": false,
-       "time": "夜",
-       "kind": "约会",
-       "place": "",
-       "choice": "没有哦",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/28",
-       "loose": false,
-       "time": "-",
-       "kind": "约会",
-       "place": "",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/29",
-       "loose": false,
-       "time": "晨",
-       "kind": "自动发生",
-       "place": "本馆-本馆道路",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/29",
-       "loose": false,
-       "time": "晨",
-       "kind": "查看",
-       "place": "本馆-鲁道夫咖啡店",
-       "choice": "是",
-       "note": "小游戏",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": true
-      },
-      {
-       "date": "8/30",
-       "loose": false,
-       "time": "昼",
-       "kind": "自动发生",
-       "place": "广场",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/30",
-       "loose": false,
-       "time": "夜",
-       "kind": "约会",
-       "place": "",
-       "choice": "嗯，有空哦",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/31",
-       "loose": false,
-       "time": "-",
-       "kind": "约会",
-       "place": "",
-       "choice": "",
-       "note": "",
-       "gain": "剧情CG",
-       "branch": false,
-       "cg": true,
-       "game": false
-      }
-     ],
+     "name": "黑羽春风",
+     "ini": "",
+     "img": "assets/avatar/黑羽春风.png",
+     "portrait": "assets/portrait/黑羽春风.webp",
+     "id": "六角中学·黑羽春风",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
      "affinity": {
-      "head": [
-       "学院祭",
-       "作业",
-       "天气",
-       "朋友",
-       "梦想",
-       "网球",
-       "书籍",
-       "音乐",
-       "游戏",
-       "时尚",
-       "食物",
-       "恋爱"
-      ],
-      "rows": [
-       {
-        "range": "11–30",
-        "values": [
-         2,
-         -3,
-         1,
-         0,
-         0,
-         2,
-         -2,
-         -2,
-         3,
-         -2,
-         2,
-         -2
-        ]
-       },
-       {
-        "range": "31–70",
-        "values": [
-         3,
-         -2,
-         1,
-         1,
-         1,
-         3,
-         -1,
-         -2,
-         3,
-         0,
-         1,
-         0
-        ]
-       },
-       {
-        "range": "71–100",
-        "values": [
-         3,
-         -2,
-         1,
-         3,
-         3,
-         3,
-         0,
-         1,
-         2,
-         1,
-         2,
-         4
-        ]
-       }
-      ]
+      "head": [],
+      "rows": []
      },
-     "extra": null
+     "extra": null,
+     "todo": true,
+     "notes": []
     }
    ]
   },
   {
-   "name": "不动峰中学",
-   "crest": "峰",
+   "name": "立海大附属中学",
+   "crest": "立",
+   "color": "#cab134",
    "chars": [
     {
-     "name": "橘桔平",
+     "name": "切原赤也",
      "ini": "",
-     "id": "不动峰中学·橘桔平",
-     "topics": [
-      "和太鼓的话题 +6",
-      "练习和太鼓的话题 +7"
-     ],
-     "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“藏青色”可提升好感度+1",
-     "jealousy": "完全不嫉妒",
-     "steps": [
-      {
-       "date": "8/22",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "本馆-鬼屋",
-       "choice": "那我不问了",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/23",
-       "loose": false,
-       "time": "夕",
-       "kind": "对话",
-       "place": "本馆-仓库",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/24",
-       "loose": false,
-       "time": "晨",
-       "kind": "查看",
-       "place": "广场",
-       "choice": "",
-       "note": "",
-       "gain": "和太鼓的话题",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/24",
-       "loose": false,
-       "time": "夕",
-       "kind": "对话",
-       "place": "本馆-鬼屋",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/25",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "舞台",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/26",
-       "loose": false,
-       "time": "晨",
-       "kind": "查看",
-       "place": "舞台",
-       "choice": "",
-       "note": "",
-       "gain": "练习和太鼓的话题",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/26",
-       "loose": false,
-       "time": "夕",
-       "kind": "对话",
-       "place": "本馆-鬼屋",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/27",
-       "loose": false,
-       "time": "昼",
-       "kind": "查看",
-       "place": "广场",
-       "choice": "是",
-       "note": "小游戏",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": true
-      },
-      {
-       "date": "8/27",
-       "loose": false,
-       "time": "夜",
-       "kind": "约会",
-       "place": "",
-       "choice": "没有，没什么特别的安排",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/28",
-       "loose": false,
-       "time": "-",
-       "kind": "约会",
-       "place": "",
-       "choice": "嗯……感觉味道有点重呢。 → 没、没什么特别的安排",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/29",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "本馆-本馆道路",
-       "choice": "",
-       "note": "",
-       "gain": "剧情CG",
-       "branch": false,
-       "cg": true,
-       "game": false
-      },
-      {
-       "date": "8/29",
-       "loose": false,
-       "time": "夕",
-       "kind": "对话",
-       "place": "本馆-鬼屋",
-       "choice": "",
-       "note": "",
-       "gain": "剧情CG",
-       "branch": false,
-       "cg": true,
-       "game": false
-      },
-      {
-       "date": "8/30",
-       "loose": false,
-       "time": "晨",
-       "kind": "查看",
-       "place": "本馆-会议室",
-       "choice": "是",
-       "note": "小游戏",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": true
-      },
-      {
-       "date": "8/30",
-       "loose": false,
-       "time": "夜",
-       "kind": "约会",
-       "place": "",
-       "choice": "没有，没什么特别的安排",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/31",
-       "loose": false,
-       "time": "-",
-       "kind": "约会",
-       "place": "",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      }
-     ],
+     "img": "assets/avatar/切原赤也.png",
+     "portrait": "assets/portrait/切原赤也.webp",
+     "id": "立海大附属中学·切原赤也",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
      "affinity": {
-      "head": [
-       "学院祭",
-       "作业",
-       "天气",
-       "朋友",
-       "梦想",
-       "网球",
-       "书籍",
-       "音乐",
-       "游戏",
-       "时尚",
-       "食物",
-       "恋爱"
-      ],
-      "rows": [
-       {
-        "range": "11–30",
-        "values": [
-         3,
-         2,
-         1,
-         0,
-         0,
-         1,
-         2,
-         1,
-         0,
-         0,
-         3,
-         -2
-        ]
-       },
-       {
-        "range": "31–70",
-        "values": [
-         2,
-         2,
-         1,
-         1,
-         0,
-         3,
-         2,
-         2,
-         1,
-         1,
-         3,
-         2
-        ]
-       },
-       {
-        "range": "71–100",
-        "values": [
-         2,
-         1,
-         1,
-         2,
-         3,
-         3,
-         1,
-         2,
-         1,
-         2,
-         2,
-         4
-        ]
-       }
-      ]
+      "head": [],
+      "rows": []
      },
-     "extra": null
+     "extra": null,
+     "todo": true,
+     "notes": []
     },
     {
-     "name": "神尾アキラ",
+     "name": "真田弦一郎",
      "ini": "",
-     "id": "不动峰中学·神尾アキラ",
-     "topics": [
-      "速度的话题 +6",
-      "生日的话题 +6"
-     ],
-     "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“荧光黄绿色”可提升好感度+1",
-     "jealousy": "非常容易嫉妒",
-     "steps": [
-      {
-       "date": "8/22",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "室内网球场",
-       "choice": "很棒的台词哦。",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/23",
-       "loose": false,
-       "time": "夕",
-       "kind": "对话",
-       "place": "室内网球场",
-       "choice": "",
-       "note": "",
-       "gain": "速度的话题",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/24",
-       "loose": false,
-       "time": "昼",
-       "kind": "查看",
-       "place": "舞台",
-       "choice": "神尾アキラ",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/24",
-       "loose": false,
-       "time": "夕",
-       "kind": "对话",
-       "place": "本馆-鬼屋",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/25",
-       "loose": false,
-       "time": "晨",
-       "kind": "对话",
-       "place": "舞台",
-       "choice": "嗯！我参加！",
-       "note": "橘、神尾、伊武的亲密度均≥11→触发26日晨事件",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/25",
-       "loose": false,
-       "time": "夕",
-       "kind": "对话",
-       "place": "本馆-鬼屋",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/26",
-       "loose": false,
-       "time": "晨",
-       "kind": "对话",
-       "place": "本馆-食堂&小卖部",
-       "choice": "",
-       "note": "",
-       "gain": "生日的话题",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/26",
-       "loose": false,
-       "time": "昼",
-       "kind": "查看",
-       "place": "本馆-会议室",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/27",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "本馆-鬼屋",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/27",
-       "loose": false,
-       "time": "夜",
-       "kind": "约会",
-       "place": "",
-       "choice": "没，没有哦。",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/28",
-       "loose": false,
-       "time": "-",
-       "kind": "约会",
-       "place": "",
-       "choice": "嗯，没问题。",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/29",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "广场",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/29",
-       "loose": false,
-       "time": "夕",
-       "kind": "对话",
-       "place": "本馆-鬼屋",
-       "choice": "",
-       "note": "",
-       "gain": "剧情CG",
-       "branch": false,
-       "cg": true,
-       "game": false
-      },
-      {
-       "date": "8/30",
-       "loose": false,
-       "time": "昼",
-       "kind": "查看",
-       "place": "室内网球场",
-       "choice": "好的。",
-       "note": "小游戏",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": true
-      },
-      {
-       "date": "8/30",
-       "loose": false,
-       "time": "夜",
-       "kind": "约会",
-       "place": "",
-       "choice": "嗯，有空哦。",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/31",
-       "loose": false,
-       "time": "-",
-       "kind": "约会",
-       "place": "",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      }
-     ],
+     "img": "assets/avatar/真田弦一郎.png",
+     "portrait": "assets/portrait/真田弦一郎.webp",
+     "id": "立海大附属中学·真田弦一郎",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
      "affinity": {
-      "head": [
-       "学院祭",
-       "作业",
-       "天气",
-       "朋友",
-       "梦想",
-       "网球",
-       "书籍",
-       "音乐",
-       "游戏",
-       "时尚",
-       "食物",
-       "恋爱"
-      ],
-      "rows": [
-       {
-        "range": "11–30",
-        "values": [
-         2,
-         -2,
-         1,
-         0,
-         0,
-         2,
-         0,
-         2,
-         2,
-         1,
-         1,
-         1
-        ]
-       },
-       {
-        "range": "31–70",
-        "values": [
-         2,
-         -2,
-         1,
-         0,
-         0,
-         3,
-         1,
-         3,
-         2,
-         2,
-         2,
-         2
-        ]
-       },
-       {
-        "range": "71–100",
-        "values": [
-         2,
-         -1,
-         1,
-         3,
-         3,
-         2,
-         1,
-         3,
-         3,
-         1,
-         2,
-         4
-        ]
-       }
-      ]
+      "head": [],
+      "rows": []
      },
-     "extra": null
+     "extra": null,
+     "todo": true,
+     "notes": []
     },
     {
-     "name": "伊武深司",
+     "name": "柳莲二",
      "ini": "",
-     "id": "不动峰中学·伊武深司",
-     "topics": [
-      "13级阶梯的话题 +5",
-      "乐观主义的话题 +5"
-     ],
-     "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“灰色”可提升好感度+1",
-     "jealousy": "喜欢上的话就会很容易嫉妒",
-     "steps": [
-      {
-       "date": "8/22",
-       "loose": false,
-       "time": "晨",
-       "kind": "对话",
-       "place": "本馆-食堂&小卖部",
-       "choice": "玉子烧套餐",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/23",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "本馆-鬼屋",
-       "choice": "我没有讨厌你啊。",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/24",
-       "loose": false,
-       "time": "昼",
-       "kind": "查看",
-       "place": "舞台",
-       "choice": "伊武深司",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/25",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "本馆-鬼屋",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/26",
-       "loose": false,
-       "time": "晨",
-       "kind": "对话",
-       "place": "本馆-鬼屋",
-       "choice": "",
-       "note": "",
-       "gain": "13阶梯的话题",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/27",
-       "loose": false,
-       "time": "晨",
-       "kind": "查看",
-       "place": "本馆-鬼屋",
-       "choice": "是",
-       "note": "小游戏",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": true
-      },
-      {
-       "date": "8/27",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "本馆-鬼屋",
-       "choice": "",
-       "note": "",
-       "gain": "乐观主义的话题",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/27",
-       "loose": false,
-       "time": "夜",
-       "kind": "约会",
-       "place": "",
-       "choice": "嗯，有空哦",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/28",
-       "loose": false,
-       "time": "-",
-       "kind": "约会",
-       "place": "",
-       "choice": "",
-       "note": "",
-       "gain": "剧情CG",
-       "branch": false,
-       "cg": true,
-       "game": false
-      },
-      {
-       "date": "8/29",
-       "loose": false,
-       "time": "晨",
-       "kind": "查看",
-       "place": "室内网球场",
-       "choice": "是",
-       "note": "小游戏",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": true
-      },
-      {
-       "date": "8/29",
-       "loose": false,
-       "time": "昼",
-       "kind": "对话",
-       "place": "舞台",
-       "choice": "",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/30",
-       "loose": false,
-       "time": "夜",
-       "kind": "约会",
-       "place": "",
-       "choice": "没，没有哦",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      },
-      {
-       "date": "8/31",
-       "loose": false,
-       "time": "-",
-       "kind": "约会",
-       "place": "",
-       "choice": "要不要去哪逛逛？",
-       "note": "",
-       "gain": "",
-       "branch": false,
-       "cg": false,
-       "game": false
-      }
-     ],
+     "img": "assets/avatar/柳莲二.png",
+     "portrait": "assets/portrait/柳莲二.webp",
+     "id": "立海大附属中学·柳莲二",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
      "affinity": {
-      "head": [
-       "学院祭",
-       "作业",
-       "天气",
-       "朋友",
-       "梦想",
-       "网球",
-       "书籍",
-       "音乐",
-       "游戏",
-       "时尚",
-       "食物",
-       "恋爱"
-      ],
-      "rows": [
-       {
-        "range": "11–30",
-        "values": [
-         2,
-         -1,
-         1,
-         0,
-         0,
-         3,
-         2,
-         2,
-         -2,
-         -2,
-         0,
-         -3
-        ]
-       },
-       {
-        "range": "31–70",
-        "values": [
-         2,
-         2,
-         1,
-         1,
-         2,
-         3,
-         2,
-         1,
-         -1,
-         -1,
-         1,
-         -2
-        ]
-       },
-       {
-        "range": "71–100",
-        "values": [
-         2,
-         2,
-         1,
-         0,
-         2,
-         3,
-         2,
-         1,
-         -1,
-         -1,
-         1,
-         2
-        ]
-       }
-      ]
+      "head": [],
+      "rows": []
      },
-     "extra": null
+     "extra": null,
+     "todo": true,
+     "notes": []
+    },
+    {
+     "name": "丸井文太",
+     "ini": "",
+     "img": "assets/avatar/丸井文太.png",
+     "portrait": "assets/portrait/丸井文太.webp",
+     "id": "立海大附属中学·丸井文太",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
+     "affinity": {
+      "head": [],
+      "rows": []
+     },
+     "extra": null,
+     "todo": true,
+     "notes": []
+    },
+    {
+     "name": "仁王雅治",
+     "ini": "",
+     "img": "assets/avatar/仁王雅治.png",
+     "portrait": "assets/portrait/仁王雅治.webp",
+     "id": "立海大附属中学·仁王雅治",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
+     "affinity": {
+      "head": [],
+      "rows": []
+     },
+     "extra": null,
+     "todo": true,
+     "notes": []
+    },
+    {
+     "name": "柳生比吕士",
+     "ini": "",
+     "img": "assets/avatar/柳生比吕士.png",
+     "portrait": "assets/portrait/柳生比吕士.webp",
+     "id": "立海大附属中学·柳生比吕士",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
+     "affinity": {
+      "head": [],
+      "rows": []
+     },
+     "extra": null,
+     "todo": true,
+     "notes": []
+    },
+    {
+     "name": "幸村精市",
+     "ini": "",
+     "img": "assets/avatar/幸村精市.png",
+     "portrait": "assets/portrait/幸村精市.webp",
+     "id": "立海大附属中学·幸村精市",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
+     "affinity": {
+      "head": [],
+      "rows": []
+     },
+     "extra": null,
+     "todo": true,
+     "notes": []
+    }
+   ]
+  },
+  {
+   "name": "四天宝寺中学",
+   "crest": "四",
+   "color": "#89b16e",
+   "chars": [
+    {
+     "name": "远山金太郎",
+     "ini": "",
+     "img": "assets/avatar/远山金太郎.png",
+     "portrait": "assets/portrait/远山金太郎.webp",
+     "id": "四天宝寺中学·远山金太郎",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
+     "affinity": {
+      "head": [],
+      "rows": []
+     },
+     "extra": null,
+     "todo": true,
+     "notes": []
+    },
+    {
+     "name": "千岁千里",
+     "ini": "",
+     "img": "assets/avatar/千岁千里.png",
+     "portrait": "assets/portrait/千岁千里.webp",
+     "id": "四天宝寺中学·千岁千里",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
+     "affinity": {
+      "head": [],
+      "rows": []
+     },
+     "extra": null,
+     "todo": true,
+     "notes": []
+    },
+    {
+     "name": "白石藏之介",
+     "ini": "",
+     "img": "assets/avatar/白石藏之介.png",
+     "portrait": "assets/portrait/白石藏之介.webp",
+     "id": "四天宝寺中学·白石藏之介",
+     "topics": [],
+     "tip": "",
+     "jealousy": "",
+     "steps": [],
+     "affinity": {
+      "head": [],
+      "rows": []
+     },
+     "extra": null,
+     "todo": true,
+     "notes": []
     }
    ]
   }

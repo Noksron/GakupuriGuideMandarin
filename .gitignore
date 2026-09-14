@@ -1,0 +1,20 @@
+# ── 源素材里站上用不到的大文件 ─────────────────────────────
+# 背景图 + 主视觉，加起来 17MB，页面没有引用
+assets/crest/gakupuri_bg.png
+assets/crest/gakupuri_keyart.png
+# 当初用来取学院色的官网截图，颜色已经写进 convert.py 的 ROSTER
+assets/crest/屏幕截图*.png
+
+# 立绘原图（约 15MB）是 make_assets.py 的输入，默认保留。
+# 想连它们一起省掉就去掉下面这行的 #，但换台电脑后就没法重新生成头像了。
+# assets/crest/
+
+# ── 已废弃 ─────────────────────────────────────────────────
+# 旧的 PNG 立绘，现在用的是同名 .webp
+assets/portrait/*.png
+
+# ── 杂项 ───────────────────────────────────────────────────
+~$*.xlsx
+__pycache__/
+.DS_Store
+Thumbs.db

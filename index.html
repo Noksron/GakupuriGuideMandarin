@@ -8,7 +8,7 @@
 :root{
   --ink:#16233d; --ink-2:#5c6a85;
   --paper:#fbfaf5; --paper-2:#f2efe6; --rule:#ddd8c9;
-  --lantern:#d1462f; --ball:#b7c832;
+  --lantern:#d1462f; --ball:#b7c832; --topic:#2f7f7a;
   --dawn:#e7c6a0; --noon:#f0d267; --dusk:#e08a52; --night:#41538a;
   --rail:56px; --rail-open:212px; --radius:3px;
 }
@@ -29,44 +29,58 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .rail.open{width:var(--rail-open);box-shadow:2px 0 18px rgba(11,20,40,.28)}
 @media (hover:hover) and (pointer:fine){ .rail:hover{width:var(--rail-open)} }
 
-.rail-top{display:flex;align-items:center;gap:10px;padding:14px 0 14px 15px;
+.rail-top{display:flex;align-items:center;gap:10px;padding:16px 0 15px 16px;
   border-bottom:1px solid rgba(255,255,255,.14);flex:0 0 auto}
-.crest{width:26px;height:26px;flex:0 0 auto;border:1.5px solid var(--paper);border-radius:50%;
-  display:grid;place-items:center;font-size:13px;font-family:"Songti SC",SimSun,serif}
 .rail-top .full{font-size:13.5px;letter-spacing:.1em;white-space:nowrap}
 
 .roster{list-style:none;margin:0;padding:4px 0 6px;overflow-y:auto;flex:1 1 auto;scrollbar-width:thin}
 /* 学院：折叠标题行 */
+/* 学院行用官网那套配色：--sc 学院色，--sc-ink 该色上能看清的字色 */
 .school-btn{display:flex;align-items:center;gap:10px;width:100%;padding:12px 0 12px 15px;
-  background:rgba(255,255,255,.05);border-top:1px solid rgba(255,255,255,.09);
-  color:#c3cfe6;font-size:14px;letter-spacing:.08em}
-.school-btn:hover{background:rgba(255,255,255,.1);color:#fff}
-.school-btn[aria-expanded="true"]{color:#fff;background:rgba(255,255,255,.11)}
+  position:relative;border-top:1px solid rgba(0,0,0,.18);
+  background-color:var(--sc,rgba(255,255,255,.05));
+  background-image:linear-gradient(rgba(12,20,38,.22),rgba(12,20,38,.22));
+  color:var(--sc-ink,#c3cfe6);
+  font-size:14px;font-weight:600;letter-spacing:.08em;transition:background-image .16s ease}
+.school-btn:hover,.school-btn[aria-expanded="true"]{background-image:none}
+.school-btn.cur::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:currentColor;opacity:.85}
 .sc{width:28px;height:28px;flex:0 0 auto;display:grid;place-items:center;font-size:13.5px;
   font-family:"Songti SC",SimSun,serif;border-radius:50%;
-  background:var(--paper);color:var(--ink)}
-.school-btn .chev{margin-left:auto;padding-right:13px;font-size:10px;color:#8595b5;
-  transition:transform .18s ease;display:inline-block}
-.school-btn[aria-expanded="true"] .chev{transform:rotate(90deg)}
-.school-btn.cur .sc{background:var(--lantern);color:#fff}
+  background:#fff;color:var(--sc-deep,var(--ink))}
+/* 旋转的是一个正方形空盒子，内边距挪到 margin 上，箭头才会绕自身中心转 */
+.school-btn .chev{margin-left:auto;margin-right:13px;flex:0 0 auto;
+  width:14px;height:14px;display:grid;place-items:center;opacity:.75;
+  transition:transform .18s ease}
+.school-btn .chev svg{display:block;width:9px;height:9px}
+.school-btn[aria-expanded="true"] .chev{transform:rotate(90deg);opacity:1}
+
 /* 未展开侧栏时只露学院 */
 .rail:not(.open) .roster li.char{display:none}
 @media (hover:hover) and (pointer:fine){ .rail:hover .roster li.char{display:list-item} }
 /* 角色：缩进一级 */
 .roster li.char button{padding-left:26px;gap:9px}
-.roster li.char .ini{width:23px;height:23px;font-size:13.5px}
+.roster li.char .ini{width:26px;height:26px;font-size:13.5px}
 .roster li.char .full{font-size:13.5px}
 .roster button{display:flex;align-items:center;gap:10px;width:100%;padding:9px 0 9px 15px;
   border-left:3px solid transparent;margin-left:-3px;color:#a9b6d1;text-align:left}
 .roster button:hover{color:#fff;background:rgba(255,255,255,.06)}
-.roster button[aria-current="true"]{color:#fff;border-left-color:var(--lantern);background:rgba(255,255,255,.08)}
+.roster button[aria-current="true"]{color:#fff;border-left-color:var(--sc,var(--lantern));background:rgba(255,255,255,.08)}
 .ini{width:26px;height:26px;flex:0 0 auto;display:grid;place-items:center;font-size:15px;
   font-family:"Songti SC",SimSun,serif;border:1px solid rgba(255,255,255,.28);border-radius:var(--radius)}
 .ini2{font-size:10.5px;letter-spacing:-.02em}
+/* 有立绘头像就用图，没有就退回文字徽记 */
+.ini.img{border:0;background:#fff;overflow:hidden}
+.ini.img img{width:100%;height:100%;object-fit:cover;display:block}
+.roster button[aria-current="true"] .ini.img{box-shadow:0 0 0 2px var(--sc,var(--paper))}
 .roster button[aria-current="true"] .ini{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 .roster .full{font-size:14px;white-space:nowrap;flex:1 1 auto}
 .prog{font-size:11px;color:#8595b5;font-variant-numeric:tabular-nums;padding-right:14px;white-space:nowrap}
 .roster li.cleared .prog{color:var(--ball)}
+/* 还没整理的角色：压暗，但仍然可以点进去看 */
+.roster li.todo button{opacity:.6}
+.roster li.todo button:hover,.roster li.todo button[aria-current="true"]{opacity:1}
+.roster li.todo .prog{color:#6b7794}
 .roster li.cleared .ini::after{content:"";position:absolute}
 .rail-foot{flex:0 0 auto;border-top:1px solid rgba(255,255,255,.14);padding:10px 0 12px 15px}
 .rail-foot button{font-size:12px;color:#8595b5;white-space:nowrap}
@@ -88,16 +102,21 @@ header{background:var(--ink);color:var(--paper);padding:24px 20px 22px;
   background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 34px)}
 .wrap{max-width:880px;margin:0 auto}
 h1{margin:0;font-size:25px;letter-spacing:.06em}
+.logo{display:block;width:214px;max-width:70%;height:auto}
 .sub{margin:4px 0 0;color:#a9b6d1;font-size:13px;letter-spacing:.04em}
 .sub b{color:var(--paper);font-weight:600}
 main{max-width:880px;margin:0 auto;padding:0 20px 60px}
 
 .brief{border-bottom:1px solid var(--rule);padding:22px 0 16px}
+.brief::after{content:"";display:block;clear:both}
+.portrait{float:right;width:150px;height:180px;object-fit:contain;
+  margin:-8px -4px 0 18px}
 .brief h2{margin:0;font-size:22px;letter-spacing:.08em}
 .meta{margin:6px 0 0;color:var(--ink-2);font-size:13.5px}
 .topics{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0;padding:0;list-style:none}
 .topics li{border:1px solid var(--rule);background:var(--paper-2);border-radius:var(--radius);padding:3px 9px;font-size:12.5px}
 
+.tools[hidden]{display:none}
 .tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:13px 0;
   border-bottom:1px solid var(--rule);position:sticky;top:0;background:var(--paper);z-index:5}
 .chip{background:var(--paper-2);border:1px solid var(--rule);border-radius:999px;padding:4px 13px;font-size:13px}
@@ -127,9 +146,22 @@ main{max-width:880px;margin:0 auto;padding:0 20px 60px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .tag{font-size:11.5px;border-radius:var(--radius);padding:2px 8px;letter-spacing:.03em}
 .tag.cg{background:var(--ball);color:#2b3208;font-weight:600}
+.tag.topic{background:var(--topic);color:#fff;font-weight:600}
 .tag.game{border:1px solid var(--ball);color:#6d7a12}
 .tag.branch{background:var(--lantern);color:#fff}
 .tag.loose{border:1px dashed var(--ink-2);color:var(--ink-2)}
+
+/* 分歧的另一条分支：嵌在主选择下面的灰框，不再和主选择平级 */
+.alt{margin:9px 0 2px;background:var(--paper-2);border:1px solid var(--rule);
+  border-left:3px solid var(--lantern);border-radius:var(--radius)}
+.alt-head{margin:0;padding:6px 11px 0;font-size:11.5px;letter-spacing:.06em;color:var(--ink-2)}
+.alt-item{display:grid;grid-template-columns:22px 1fr;gap:9px;padding:5px 11px 9px;align-items:start}
+.alt-item+.alt-item{border-top:1px dotted var(--rule);padding-top:9px}
+.alt-item.done{opacity:.45}
+.alt-item .tick{margin-top:2px}
+.alt-item.done .tick{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.alt .choice{font-size:14.5px;margin:0}
+.alt .choice.none{font-size:13.5px}
 
 details{border:1px solid var(--rule);border-radius:var(--radius);margin-top:22px;background:var(--paper-2)}
 summary{padding:11px 14px;cursor:pointer;font-size:14px;letter-spacing:.04em}
@@ -142,11 +174,14 @@ td.r{text-align:left;white-space:nowrap;background:var(--paper-2)}
 .p3{background:#cfd97a} .p2{background:#e0e5a4} .p1{background:#eef0d2}
 .n1{background:#f3dcd6} .n2{background:#e9c1b7} .n3{background:#dfa495}
 .hint{font-size:12.5px;color:var(--ink-2);margin:10px 0 0}
+.empty{padding:46px 0 40px;text-align:center;color:var(--ink-2);font-size:14px}
+.empty b{display:block;font-size:16px;color:var(--ink);font-weight:600;margin-bottom:6px}
 footer{max-width:880px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-2);font-size:12.5px;border-top:1px solid var(--rule)}
 @media (max-width:600px){
   .day{grid-template-columns:56px 1fr}
   .day-label .d{font-size:18px}
   .row{padding-left:10px}
+  .portrait{width:110px;height:132px;margin-left:12px}
   h1{font-size:21px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -156,7 +191,7 @@ footer{max-width:880px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-2);f
 
 <aside class="rail" id="rail">
   <button id="railToggle" aria-label="展开学院侧栏" aria-expanded="false"></button>
-  <div class="rail-top"><span class="crest">祭</span><span class="full">选择角色</span></div>
+  <div class="rail-top"><span class="full">选择角色</span></div>
   <ul class="roster" id="roster"></ul>
   <div class="rail-foot"><button id="reset">清除全部进度</button></div>
 </aside>
@@ -164,16 +199,18 @@ footer{max-width:880px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-2);f
 
 <div class="shell">
   <header><div class="wrap">
-    <h1>学院祭的王子们</h1>
+    <h1><img class="logo" src="assets/ui/logo.png" alt="学院祭的王子们"
+      onerror="this.parentNode.textContent='学院祭的王子们'"></h1>
     <p class="sub" id="sub">会期 <b>8/22 – 9/1</b></p>
   </div></header>
 
   <main>
     <section class="brief">
+      <img class="portrait" id="cportrait" alt="" hidden>
       <h2 id="cname"></h2>
       <p class="meta" id="cmeta"></p>
       <ul class="topics" id="ctopics"></ul>
-      <p class="note" id="ctip" style="margin-top:10px"></p>
+      <div id="ctip" style="margin-top:10px"></div>
     </section>
 
     <div class="tools" role="group" aria-label="筛选">
@@ -205,6 +242,32 @@ footer{max-width:880px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-2);f
 <script src="data.js"></script>
 <script>
 const WEEK = ["日","一","二","三","四","五","六"];
+/* 各校官网用色。convert.py 会把 school.color 一起写进 data.js，这里是兜底。 */
+const SCHOOL_COLOR = {
+  "青春学园":"#595ccc", "冰帝学园":"#587d95", "圣鲁道夫学院":"#5e504b",
+  "不动峰中学":"#646464", "山吹中学":"#5c8161", "立海大附属":"#cab134",
+  "立海大附属中学":"#cab134", "六角中学":"#804749", "四天宝寺中学":"#89b16e"
+};
+const DEEP = [20, 24, 31];                    // 压深时往这个近黑色靠
+const hex2rgb = h => { const n = parseInt(h.slice(1), 16); return [n>>16 & 255, n>>8 & 255, n & 255]; };
+const rgb2hex = c => "#" + c.map(v => Math.round(v).toString(16).padStart(2, "0")).join("");
+function lum(c){
+  const f = v => (v /= 255) <= .03928 ? v/12.92 : Math.pow((v+.055)/1.055, 2.4);
+  return .2126*f(c[0]) + .7152*f(c[1]) + .0722*f(c[2]);
+}
+/* 底色深就用白字，底色亮（立海的金、四天宝寺的绿）就用近黑色 */
+function inkOn(hex){ return lum(hex2rgb(hex)) > .30 ? "#14181f" : "#fff"; }
+/* 白底圆徽记上的字：把学院色一路压深到白底上看得清为止 */
+function deepen(hex){
+  const base = hex2rgb(hex);
+  let t = 0, c = base;
+  while (lum(c) > .18 && t < 1){ t += .05; c = base.map((v, i) => v + (DEEP[i] - v) * t); }
+  return rgb2hex(c);
+}
+function schoolVars(s){
+  const c = s.color || SCHOOL_COLOR[s.name] || "";
+  return c ? `style="--sc:${c};--sc-ink:${inkOn(c)};--sc-deep:${deepen(c)}"` : "";
+}
 const KEY = "gakuensai.progress.v1";
 let cur = 0, filter = "all", openSchool = 0;
 /* 打平成一维，方便按序号切换；每项记住所属学院 */
@@ -243,9 +306,13 @@ function toggleStep(id, i){
   store.save(progress);
 }
 
+/* 游戏内是虚拟日历：会期第一天 8/22 固定为周一，往后顺推 */
+const DAY0 = [8, 22], DAY0_WEEK = 1;
 function weekday(md){
-  const [m,d] = md.split("/").map(Number);
-  return WEEK[new Date(2026, m-1, d).getDay()];
+  const m = /^(\d{1,2})\/(\d{1,2})$/.exec(String(md).trim());
+  if (!m) return "";
+  const n = (Date.UTC(2001, +m[1]-1, +m[2]) - Date.UTC(2001, DAY0[0]-1, DAY0[1])) / 864e5;
+  return WEEK[((DAY0_WEEK + n) % 7 + 7) % 7];
 }
 
 /* ---------- 侧列 ---------- */
@@ -254,20 +321,26 @@ function buildRoster(){
   el("roster").innerHTML = DATA.schools.map((s, si) => {
     const open = si === openSchool;
     const hasCur = s.chars.some((_, ci) => indexOfChar(si, ci) === cur);
-    const head = `<li><button class="school-btn${hasCur ? " cur" : ""}" data-s="${si}" aria-expanded="${open}">
+    const v = schoolVars(s);
+    const head = `<li ${v}><button class="school-btn${hasCur ? " cur" : ""}" data-s="${si}" aria-expanded="${open}">
         <span class="sc">${esc(s.crest)}</span>
         <span class="full">${esc(s.name)}</span>
-        <span class="chev full" aria-hidden="true">▸</span>
+        <span class="chev full" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M3.2 1.4 L6.8 5 L3.2 8.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button></li>`;
     const rows = s.chars.map(c => {
       i++;
       if (!open) return "";
       const n = doneOf(c.id).size, total = c.steps.length, label = c.ini || c.name[0];
-      return `<li class="char ${n===total ? "cleared" : ""}">
+      const todo = !total;
+      const badge = c.img
+        ? `<span class="ini img"><img src="${esc(c.img)}" alt="" loading="lazy"
+             onerror="this.parentNode.className='ini';this.parentNode.textContent='${esc(label)}'"></span>`
+        : `<span class="ini${label.length > 1 ? " ini2" : ""}">${esc(label)}</span>`;
+      return `<li class="char ${todo ? "todo" : n===total ? "cleared" : ""}" ${v}>
         <button data-i="${i}" aria-current="${i===cur}">
-          <span class="ini${label.length > 1 ? " ini2" : ""}">${esc(label)}</span>
+          ${badge}
           <span class="full">${esc(c.name)}</span>
-          <span class="prog">${n===total ? "已通关" : n + "/" + total}</span>
+          <span class="prog">${todo ? "待补充" : n===total ? "已通关" : n + "/" + total}</span>
         </button></li>`;
     }).join("");
     return head + rows;
@@ -328,37 +401,49 @@ function cellClass(v){
 
 function render(){
   const c = CHARS[cur], done = doneOf(c.id);
-  document.title = c.name + " · 学院祭的王子们攻略";
+  document.title = c.name + " · 学院祭的王子们全角色攻略";
   el("cname").textContent = c.name;
-  el("cmeta").textContent = c.school + "　嫉妒程度：" + (c.jealousy || "—");
+  const empty = !c.steps.length;
+  el("cmeta").textContent = empty
+    ? c.school + "　攻略待补充"
+    : c.school + "　嫉妒程度：" + (c.jealousy || "—");
+  document.querySelector(".tools").hidden = empty;
   el("ctopics").innerHTML = c.topics.map(t=>`<li>${esc(t)}</li>`).join("");
-  el("ctip").textContent = c.tip || "";
-  el("ctip").style.display = c.tip ? "" : "none";
+  /* c.tip 来自表格 C3 的「丨」之后，c.notes 是 convert.py 里额外挂的说明 */
+  el("ctip").innerHTML = [c.tip, ...(c.notes || [])]
+    .filter(Boolean).map(t => `<p class="note">${esc(t)}</p>`).join("");
+  const pt = el("cportrait");
+  pt.hidden = !c.portrait;
+  if (c.portrait) pt.src = c.portrait;
 
-  const keep = s_i => {
-    const [s,i] = s_i;
+  const keep = ([s,i]) => {
     if (filter === "cg") return s.cg;
     if (filter === "game") return s.game;
     if (filter === "branch") return s.branch;
     if (filter === "todo") return !done.has(i);
     return true;
   };
-  const steps = c.steps.map((s,i)=>[s,i]).filter(keep);
+  /* 一个分歧点连同它的另一条分支算一组，筛选时整组一起留下 */
+  const groups = groupSteps(c.steps).filter(g => keep(g.main) || g.alts.some(keep));
   el("count").textContent = `已完成 ${done.size} / ${c.steps.length}`;
 
   const days = [];
-  steps.forEach(([s,i])=>{
+  groups.forEach(g=>{
+    const date = g.main[0].date;
     const last = days[days.length-1];
-    if (last && last.date === s.date) last.items.push([s,i]);
-    else days.push({date:s.date, items:[[s,i]]});
+    if (last && last.date === date) last.items.push(g);
+    else days.push({date, items:[g]});
   });
 
   el("timeline").innerHTML = days.map(d=>`
     <section class="day">
-      <div class="day-label"><span class="d">${esc(d.date)}</span><span class="w">周${weekday(d.date)}</span></div>
-      <div class="rows">${d.items.map(([s,i])=>rowHTML(s,i,done)).join("")}</div>
-    </section>`).join("") ||
-    `<p class="hint" style="padding:26px 0">${filter==="todo" ? "这个角色的事件都勾完了。" : "没有符合条件的回合。"}</p>`;
+      <div class="day-label"><span class="d">${esc(d.date)}</span>${
+        weekday(d.date) ? `<span class="w">周${weekday(d.date)}</span>` : ""}</div>
+      <div class="rows">${d.items.map(g=>groupHTML(g,done)).join("")}</div>
+    </section>`).join("") || (empty
+      ? `<div class="empty"><b>这条线还没整理</b>表格补进来之后这里就会有内容。</div>`
+      : `<p class="hint" style="padding:26px 0">${
+          filter==="todo" ? "这个角色的事件都勾完了。" : "没有符合条件的回合。"}</p>`);
 
   el("extra").innerHTML = c.extra ? `
     <details>
@@ -378,16 +463,83 @@ function render(){
       r.values.map(v=>`<td class="${cellClass(v)}">${v ?? ""}</td>`).join("")}</tr>`).join("")}` : "";
 }
 
-function rowHTML(s, i, done){
-  const isDone = done.has(i);
+/* 把「分歧」和紧跟其后、同日同时段同地点的另一条分支合成一组 */
+function groupSteps(steps){
+  const out = [];
+  for (let i = 0; i < steps.length; i++){
+    const s = steps[i], g = {main:[s,i], alts:[]};
+    if (s.branch){
+      let j = i + 1;
+      while (j < steps.length){
+        const t = steps[j];
+        if (t.branch || t.date !== s.date || t.time !== s.time
+            || t.kind !== s.kind || t.place !== s.place) break;
+        g.alts.push([t,j]); j++;
+      }
+      i = j - 1;
+    }
+    out.push(g);
+  }
+  return out;
+}
+
+/* 「XX的话题」这类是对话拿到的获得物，和 CG 一样给实色标签 */
+const TOPIC_RE = /^.{1,12}话题$/;
+
+function splitParts(v, re){ return String(v || "").split(re).map(x=>x.trim()).filter(Boolean); }
+
+/* 返回标签 HTML；fromGain=false 时认不出来的部分返回 null，留在备注文字里 */
+function chip(t, fromGain){
+  if (t.includes("CG") && (fromGain || t.length <= 10)) return `<span class="tag cg">${esc(t)}</span>`;
+  /* 获取栏里凡是带「话题」的都算获得物；备注栏要求整段就是「XX的话题」才算 */
+  if (fromGain ? t.includes("话题") : TOPIC_RE.test(t))
+    return `<span class="tag topic">${esc(t)}</span>`;
+  return fromGain ? `<span class="tag game">${esc(t)}</span>` : null;
+}
+
+/* 「特训的话题、剧情CG」要拆开；「28日、31日私服CG」不能拆 */
+function gainChips(gain){
+  let parts = [gain].filter(Boolean);
+  const p = splitParts(gain, /、/);
+  if (p.length > 1 && p.every(x => x.includes("CG") || x.includes("话题"))) parts = p;
+  return parts.map(t => chip(t, true));
+}
+
+function bodyHTML(s, isAlt){
+  const chips = [], rest = [];
+  for (const part of splitParts(s.note, /\s*[\/／;；]\s*/)){
+    if (part === "小游戏") continue;                  // 已经有小游戏标签了
+    const c = chip(part, false);
+    (c ? chips : rest).push(c || part);
+  }
   const tags = [
-    s.branch ? `<span class="tag branch">分歧 · 先存档</span>` : "",
-    s.cg ? `<span class="tag cg">${esc(s.gain || "CG")}</span>` : "",
+    (s.branch && !isAlt) ? `<span class="tag branch">分歧 · 先存档</span>` : "",
+    ...gainChips(s.gain),
+    ...chips,
     s.game ? `<span class="tag game">小游戏</span>` : "",
     s.loose ? `<span class="tag loose">日期不固定</span>` : "",
-    (!s.cg && s.gain) ? `<span class="tag game">${esc(s.gain)}</span>` : "",
   ].filter(Boolean).join("");
+  const note = rest.join("；");
 
+  return `${s.choice ? `<p class="choice">「${esc(s.choice)}」</p>` : `<p class="choice none">无需选择</p>`}
+      ${note ? `<p class="note">${esc(note)}</p>` : ""}
+      ${tags ? `<div class="tags">${tags}</div>` : ""}`;
+}
+
+function groupHTML(g, done){
+  const alts = g.alts.map(([s,i])=>{
+    const isDone = done.has(i);
+    return `<div class="alt-item${isDone ? " done" : ""}">
+        <button class="tick" data-i="${i}" aria-pressed="${isDone}" aria-label="标记完成">✓</button>
+        <div>${bodyHTML(s, true)}</div>
+      </div>`;
+  }).join("");
+  const box = alts ? `<div class="alt"><p class="alt-head">另一分支 · 二选一</p>${alts}</div>` : "";
+  return rowHTML(g.main[0], g.main[1], done, box);
+}
+
+function rowHTML(s, i, done, extra){
+  const isDone = done.has(i);
   return `<div class="row${isDone ? " done" : ""}">
     <button class="tick" data-i="${i}" aria-pressed="${isDone}" aria-label="标记完成">✓</button>
     <div>
@@ -396,9 +548,8 @@ function rowHTML(s, i, done){
         <span class="kind">${esc(s.kind)}</span>
         ${s.place ? `<span>${esc(s.place)}</span>` : ""}
       </div>
-      ${s.choice ? `<p class="choice">「${esc(s.choice)}」</p>` : `<p class="choice none">无需选择</p>`}
-      ${s.note && !s.game ? `<p class="note">${esc(s.note)}</p>` : ""}
-      ${tags ? `<div class="tags">${tags}</div>` : ""}
+      ${bodyHTML(s, false)}
+      ${extra || ""}
     </div>
   </div>`;
 }

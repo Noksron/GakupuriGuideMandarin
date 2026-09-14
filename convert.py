@@ -32,12 +32,67 @@ SCHOOLS = [
     ("圣鲁道夫", "圣鲁道夫学院", "鲁"),
     ("不动峰",   "不动峰中学", "峰"),
     ("山吹",     "山吹中学",   "吹"),
-    ("立海",     "立海大附属", "立"),
+    ("立海",     "立海大附属中学", "立"),
+    ("六角",     "六角中学",   "六"),
+    ("四天宝寺", "四天宝寺中学", "四"),
 ]
+
+# 全学院名单：顺序、分组、学院色都以这里为准。
+# 还没整理的角色也会出现在站上（标成「待补充」），Excel 里补了哪个就自动填哪个。
+# 注意：Excel 工作表 B2 的角色名要和这里写的一致，否则会被当成新角色单列出来。
+ROSTER = [
+    ("青春学园", "青", "#595ccc", [
+        "越前龙马", "手塚国光", "大石秀一郎", "不二周助", "菊丸英二", "河村隆", "乾贞治", "桃城武", "海堂熏"]),
+    ("不动峰中学", "峰", "#646464", [
+        "橘桔平", "神尾アキラ", "伊武深司"]),
+    ("圣鲁道夫学院", "鲁", "#5e504b", [
+        "赤澤吉朗", "観月はじめ", "不二裕太"]),
+    ("山吹中学", "吹", "#5c8161", [
+        "亚久津仁", "千石清纯", "坛太一"]),
+    ("冰帝学园", "冰", "#587d95", [
+        "迹部景吾", "忍足侑士", "向日岳人", "凤长太郎", "宍户亮", "日吉若", "芥川慈郎"]),
+    ("六角中学", "六", "#804749", [
+        "天根光", "佐伯虎次郎", "黑羽春风"]),
+    ("立海大附属中学", "立", "#cab134", [
+        "切原赤也", "真田弦一郎", "柳莲二", "丸井文太", "仁王雅治", "柳生比吕士", "幸村精市"]),
+    ("四天宝寺中学", "四", "#89b16e", [
+        "远山金太郎", "千岁千里", "白石藏之介"]),
+]
+
+
+# 表格之外的补充说明，按「学院·角色」挂，会显示在角色名下面
+EXTRA_TIPS = {
+    "冰帝学园·迹部景吾": ["奖励CG为「学院祭扣杀BINGO」中概率获得"],
+    "冰帝学园·忍足侑士": ["奖励CG为「学院祭扣杀BINGO」中概率获得"],
+}
+
+
+def blank(sname, cname, out_dir):
+    """还没整理的角色：只有名字和头像，正文那边会显示「待补充」。"""
+    return {
+        "name": cname,
+        "ini": INITIALS.get(cname, ""),
+        "img": asset("avatar", cname, out_dir, (".png", ".webp")),
+        "portrait": asset("portrait", cname, out_dir),
+        "id": f"{sname}·{cname}",
+        "topics": [], "tip": "", "notes": EXTRA_TIPS.get(f"{sname}·{cname}", []),
+        "jealousy": "",
+        "steps": [], "affinity": {"head": [], "rows": []}, "extra": None,
+        "todo": True,
+    }
+
+
+def asset(kind, name, out_dir, exts=(".webp", ".png")):
+    """assets/<kind>/<角色名>.<后缀> 存在就返回相对路径，否则空串。"""
+    for ext in exts:
+        rel = f"assets/{kind}/{name}{ext}"
+        if os.path.exists(os.path.join(out_dir, rel)):
+            return rel
+    return ""
 
 # 折叠侧栏里显示的缩写，默认取姓氏首字，同形的在这里指定
 INITIALS = {
-    "不二裕太": "裕太",
+    "不二裕太": "裕",          # 两个字塞进小方框会换行，统一用单字
 }
 
 
@@ -138,27 +193,55 @@ def main():
         out = sys.argv[sys.argv.index("-o") + 1]
         args = [a for a in args if a != out]
 
-    schools = []
+    out_dir = os.path.dirname(os.path.abspath(out))
+
+    # 先把所有 Excel 读进来，再按名单的顺序拼装
+    parsed = {}
     for src in args:
         sname, crest = school_of(src)
         wb = load_workbook(src, data_only=True)
-        chars = []
         for name in wb.sheetnames:
             ws = wb[name]
             rows, affinity, extra = parse_sheet(ws)
             topics, tip = split_topics(ws["C3"].value)
-            chars.append({
-                "name": (ws["B2"].value or name).strip(),
-                "ini": INITIALS.get((ws["B2"].value or name).strip(), ""),
+            cname = (ws["B2"].value or name).strip()
+            parsed[(sname, cname)] = {
+                "name": cname,
+                "ini": INITIALS.get(cname, ""),
+                "img": asset("avatar", cname, out_dir, (".png", ".webp")),  # 侧栏头像
+                "portrait": asset("portrait", cname, out_dir),  # 正文立绘
                 "id": f"{sname}·{name}",
                 "topics": topics,
-                "tip": tip,
+                "tip": norm_note(tip),
+                "notes": EXTRA_TIPS.get(f"{sname}·{cname}", []),
                 "jealousy": clean(ws["J3"].value).replace("嫉妒：", ""),
                 "steps": rows,
                 "affinity": affinity,
                 "extra": extra,
-            })
-        schools.append({"name": sname, "crest": crest, "chars": chars})
+                "todo": not rows,
+            }
+
+    schools, used = [], set()
+    for sname, crest, color, names in ROSTER:
+        chars = []
+        for cname in names:
+            got = parsed.get((sname, cname))
+            if got:
+                used.add((sname, cname))
+            chars.append(got or blank(sname, cname, out_dir))
+        schools.append({"name": sname, "crest": crest, "color": color, "chars": chars})
+
+    # 名单上没有的（多半是 Excel 里名字写法不一样），单独挂到对应学院末尾并提醒
+    for key, got in parsed.items():
+        if key in used:
+            continue
+        sname, cname = key
+        print(f"  ! 名单里没有「{sname} {cname}」，已单独加在该学院末尾")
+        for s_ in schools:
+            if s_["name"] == sname:
+                s_["chars"].append(got); break
+        else:
+            schools.append({"name": sname, "crest": "校", "color": "", "chars": [got]})
 
     payload = {"schools": schools}
     with open(out, "w", encoding="utf-8") as f:
@@ -166,11 +249,15 @@ def main():
 
     total = sum(len(c["steps"]) for s_ in schools for c in s_["chars"])
     n_chars = sum(len(s_["chars"]) for s_ in schools)
-    print(f"✓ {out}：{len(schools)} 个学院，{n_chars} 个角色，{total} 条行动")
+    n_todo = sum(1 for s_ in schools for c in s_["chars"] if c.get("todo"))
+    print(f"✓ {out}：{len(schools)} 个学院，{n_chars} 个角色（{n_todo} 个待补充），{total} 条行动")
     for s_ in schools:
         for c in s_["chars"]:
-            a, b = (c["steps"][0]["date"], c["steps"][-1]["date"]) if c["steps"] else ("-", "-")
-            print(f"  {s_['name']} {c['name']}：{a} – {b}（{len(c['steps'])} 条）")
+            if c.get("todo"):
+                print(f"  {s_['name']} {c['name']}：待补充")
+            else:
+                a, b = c["steps"][0]["date"], c["steps"][-1]["date"]
+                print(f"  {s_['name']} {c['name']}：{a} – {b}（{len(c['steps'])} 条）")
 
 
 if __name__ == "__main__":
