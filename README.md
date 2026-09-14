@@ -64,4 +64,6 @@
 
 数据来自个人游玩记录，仅供参考，可能有错漏或与实际版本不符。发现问题欢迎在本仓库提 issue 或在小红书留评，会不定期上线修改。
 
-本站为非官方同人整理，不作商业用途。游戏素材（立绘、logo、背景）版权归原作者所有 ©TK/S ©N.TP II ©KONAMI。
+本站为非官方同人整理，不作商业用途。站内图片素材（立绘、logo、背景）取自科乐美官方公开的[「学园祭的王子们」投稿可使用素材](https://www.konami.com/games/tenipuri/guideline/material-gakupuri/asia/zh-cn/)，并遵循其二次创作规范。
+
+©2009 TAKESHI KONOMI / SHUEISHA ©2012 NAS, THE PRINCE OF TENNIS II PROJECT ©Konami Digital Entertainment

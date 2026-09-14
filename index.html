@@ -221,7 +221,11 @@ td.r{text-align:left;white-space:nowrap;background:var(--paper-2)}
 .scard li.todo .nm,.scard li.todo .st{color:#9aa3b4}
 .empty{padding:46px 0 40px;text-align:center;color:var(--ink-2);font-size:14px}
 .empty b{display:block;font-size:16px;color:var(--ink);font-weight:600;margin-bottom:6px}
-footer{max-width:880px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-2);font-size:12.5px;border-top:1px solid var(--rule)}
+footer{max-width:880px;margin:0 auto;padding:22px 20px 44px;color:var(--ink-2);font-size:12.5px;border-top:1px solid var(--rule)}
+footer p{margin:0 0 9px}
+footer .legal{margin:0;font-size:11.5px;line-height:1.75;color:#8d97a9}
+footer a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+footer a:hover{color:var(--lantern)}
 @media (max-width:600px){
   .day{grid-template-columns:56px 1fr}
   .day-label .d{font-size:18px}
@@ -259,8 +263,8 @@ footer{max-width:880px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-2);f
       <div class="intro">
         <h2>关于这份攻略</h2>
         <p>《网球王子 · 学园祭的王子们》的全角色攻略整理。按会期 <b>8/22 – 9/1</b> 逐日列出每个回合该去哪、选什么、能拿到什么，目标是 <b>全 CG 收集</b>。</p>
-        <p>数据来自我自己边打边记的表格，边整理边往上补。下面标「待补充」的就是还没进行具体核对的角色，我会尽量在9月份内更新完毕。</p>
-        <p>每条事件左边的方框可以勾选作为进度存储，进度只存在你自己的浏览器里，由于本页面采用本地存储，并没有进行服务器同步，所以无法做到多设备同时运行（或许等我本学期所有due全部忙完之后我会有心情进行修改，不过暂时来说确实是没有这个功夫，希望谅解）。发现错漏欢迎在仓库提 issue / 小红书留评，我会不定期上线修改。</p>
+        <p>数据来自我自己边打边记的表格，边整理边往上补。下面标「待补充」的就是还没轮到的那些。</p>
+        <p>每条事件左边的方框可以勾，进度只存在你自己的浏览器里。发现错漏欢迎在仓库提 issue / 小红书留评，我会不定期上线修改。</p>
       </div>
       <!-- ▲▲ 个人说明到这里 ▲▲ -->
 
@@ -301,7 +305,13 @@ footer{max-width:880px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-2);f
     </div><!-- /#charview -->
   </main>
 
-  <footer>数据来自个人攻略表格，仅供参考。发现错漏欢迎在仓库提 issue / 小红书留评，我会不定期上线修改。</footer>
+  <footer>
+    <p>数据来自个人攻略表格，仅供参考。发现错漏欢迎在仓库提 issue / 小红书留评，我会不定期上线修改。</p>
+    <p class="legal">本站为非官方同人整理，不作商业用途。站内图片素材取自科乐美官方公开的<a
+      href="https://www.konami.com/games/tenipuri/guideline/material-gakupuri/asia/zh-cn/"
+      target="_blank" rel="noopener">「学园祭的王子们」投稿可使用素材</a>，并遵循其二次创作规范。<br>
+    ©2009 TAKESHI KONOMI / SHUEISHA ©2012 NAS, THE PRINCE OF TENNIS II PROJECT ©Konami Digital Entertainment</p>
+  </footer>
 </div>
 
 <script src="data.js"></script>
