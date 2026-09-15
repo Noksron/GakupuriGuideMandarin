@@ -51,7 +51,8 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .rail-top .ico{width:22px;height:22px;flex:0 0 auto;display:grid;place-items:center}
 .rail-top .ico svg{width:16px;height:16px;display:block}
 
-.roster{list-style:none;margin:0;padding:4px 0 6px;overflow-y:auto;flex:1 1 auto;scrollbar-width:thin}
+.roster{list-style:none;margin:0;padding:4px 0 6px;flex:1 1 auto;scrollbar-width:thin;
+  overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain}
 /* 学院：折叠标题行 */
 /* 学院行用官网那套配色：--sc 学院色，--sc-ink 该色上能看清的字色 */
 .school-btn{display:flex;align-items:center;gap:10px;width:100%;padding:12px 0 12px 15px;
@@ -68,10 +69,10 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
   background:#fff;color:var(--sc-deep,var(--ink))}
 /* 旋转的是一个正方形空盒子，内边距挪到 margin 上，箭头才会绕自身中心转 */
 .school-btn .chev{margin-left:auto;margin-right:13px;flex:0 0 auto;
-  width:14px;height:14px;display:grid;place-items:center;opacity:.75;
+  width:14px;height:14px;display:grid;place-items:center;
   transition:transform .18s ease}
 .school-btn .chev svg{display:block;width:9px;height:9px}
-.school-btn[aria-expanded="true"] .chev{transform:rotate(90deg);opacity:1}
+.school-btn[aria-expanded="true"] .chev{transform:rotate(90deg)}
 
 /* 未展开侧栏时只露学院 */
 .rail:not(.open) .roster li.char{display:none}
@@ -103,13 +104,14 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .rail-foot{flex:0 0 auto;border-top:1px solid rgba(255,255,255,.14);padding:10px 0 12px 15px}
 .rail-foot button{font-size:12px;color:#8595b5;white-space:nowrap}
 .rail-foot button:hover{color:#fff}
-/* 折叠时隐藏文字 */
-.full,.prog,.rail-foot{opacity:0;transition:opacity .14s ease}
-.rail.open .full,.rail.open .prog,.rail.open .rail-foot{opacity:1}
+/* 折叠时隐藏文字：visibility 一起关掉，免得透明的元素还能被点到或拖出来 */
+.full,.prog,.rail-foot{opacity:0;visibility:hidden;transition:opacity .14s ease}
+.rail.open .full,.rail.open .prog,.rail.open .rail-foot{opacity:1;visibility:visible}
 @media (hover:hover) and (pointer:fine){
-  .rail:hover .full,.rail:hover .prog,.rail:hover .rail-foot{opacity:1}
+  .rail:hover .full,.rail:hover .prog,.rail:hover .rail-foot{opacity:1;visibility:visible}
 }
-#railToggle{position:absolute;right:0;top:0;width:var(--rail);height:52px;z-index:2}
+/* 触屏：收起状态下整条侧栏都是「点开」的热区；展开后让位给里面的按钮 */
+#railToggle{position:absolute;inset:0;width:var(--rail);z-index:2}
 @media (hover:hover) and (pointer:fine){ #railToggle{display:none} }
 .rail.open #railToggle{display:none}
 .scrim{position:fixed;inset:0;background:rgba(11,20,40,.4);z-index:25;display:none}
