@@ -8053,7 +8053,7 @@ const DATA = {
        "choice": "",
        "note": "好感度31以上且未使用过“网球的话题”时发生；计入31日CG分歧的特殊话题",
        "gain": "变装的话题",
-       "branch": true,
+       "branch": false,
        "cg": true,
        "game": false
       },

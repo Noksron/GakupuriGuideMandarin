@@ -84,7 +84,31 @@ SAVE_POINTS = {
 }
 
 
+# 表格 A 列打了 * 但其实不是当场二选一的回合，在这里取消掉。
+# 如果你把表格里那个 * 删掉了，这里对应的行也可以删。
+NOT_BRANCH = {
+    "立海大附属中学·仁王雅治": ["8/26 昼"],
+}
+
+
+def _find(rows, spec):
+    """spec 是「日期 时段」，时段可省；省略时取那天的第一个回合。"""
+    date, _, time = spec.partition(" ")
+    time = time.strip()
+    for r in rows:
+        if r["date"] == date and (not time or r["time"] == time):
+            return r
+    return None
+
+
 def mark_saves(sname, cname, rows):
+    for spec in NOT_BRANCH.get(f"{sname}·{cname}", []):
+        r = _find(rows, spec)
+        if r is None:
+            print(f"  ! {sname} {cname} 要取消的分歧「{spec}」在表里找不到对应回合")
+        else:
+            r["branch"] = False
+
     for spec in SAVE_POINTS.get(f"{sname}·{cname}", []):
         date, _, time = spec.partition(" ")
         time = time.strip()
