@@ -125,9 +125,13 @@ def norm_note(s):
     return re.sub(r"cg", "CG", s, flags=re.I)
 
 
+# 右侧栏里这些是表格自己的说明文字，站上已有固定文案或属于表头，不往页面上搬
+SKIP_SIDE_NOTE = ("好感度10以下", "按好感度划分", "普通话题 好感度加成")
+
+
 def parse_sheet(ws):
     rows, affinity, extra = [], None, None
-    aff_head, extra_head, extra_rows = [], "", []
+    aff_head, extra_head, extra_rows, side_notes = [], "", [], []
 
     for r in ws.iter_rows(min_row=6, max_row=ws.max_row):
         cell = {get_column_letter(c.column): c.value for c in r}
@@ -144,6 +148,10 @@ def parse_sheet(ws):
             })
         elif isinstance(j, str) and "回收" in j:
             extra_head = norm_note(j.strip())
+        elif (isinstance(j, str) and j.strip().startswith("注意")
+              and not any(k in j for k in SKIP_SIDE_NOTE)):
+            # 「注意：把电话号码告诉…」这类结局条件，原来会被整条丢掉
+            side_notes.append(norm_note(re.sub(r"^注意\s*[：:]\s*", "", j.strip())))
         elif isinstance(j, (int, float)) and extra_head:
             extra_rows.append({
                 "date": f"8/{int(j)}" if int(j) >= 22 else f"9/{int(j)}",
@@ -176,14 +184,26 @@ def parse_sheet(ws):
 
     if extra_rows:
         extra = {"title": extra_head, "rows": extra_rows}
-    return rows, {"head": aff_head, "rows": affinity or []}, extra
+    return rows, {"head": aff_head, "rows": affinity or []}, extra, side_notes
 
 
 def split_topics(cell):
-    """「A +6 / B +7 丨 额外提示」 -> (["A +6", "B +7"], "额外提示")"""
+    """「A +6 / B +7 丨 额外提示」 -> (["A +6", "B +7"], "额外提示")
+
+    「丨」之前只放话题。万一写了别的（比如幸村那句多周目说明），
+    不当成话题标签，挪到提示里，免得一整句话被塞进小圆角框。
+    """
     parts = re.split(r"[丨|｜]", clean(cell), maxsplit=1)
-    topics = [t.strip() for t in re.split(r"[/／]", parts[0]) if t.strip()]
-    return topics, (parts[1].strip() if len(parts) > 1 else "")
+    tip = parts[1].strip() if len(parts) > 1 else ""
+    topics, stray = [], []
+    for t in re.split(r"[/／]", parts[0]):
+        t = t.strip()
+        if not t:
+            continue
+        (topics if "话题" in t else stray).append(t)
+    if stray:
+        tip = "；".join(stray + ([tip] if tip else []))
+    return topics, tip
 
 
 def main():
@@ -202,7 +222,7 @@ def main():
         wb = load_workbook(src, data_only=True)
         for name in wb.sheetnames:
             ws = wb[name]
-            rows, affinity, extra = parse_sheet(ws)
+            rows, affinity, extra, side_notes = parse_sheet(ws)
             topics, tip = split_topics(ws["C3"].value)
             cname = (ws["B2"].value or name).strip()
             parsed[(sname, cname)] = {
@@ -213,7 +233,7 @@ def main():
                 "id": f"{sname}·{name}",
                 "topics": topics,
                 "tip": norm_note(tip),
-                "notes": EXTRA_TIPS.get(f"{sname}·{cname}", []),
+                "notes": side_notes + EXTRA_TIPS.get(f"{sname}·{cname}", []),
                 "jealousy": clean(ws["J3"].value).replace("嫉妒：", ""),
                 "steps": rows,
                 "affinity": affinity,
