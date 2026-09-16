@@ -178,6 +178,7 @@ main{max-width:880px;margin:0 auto;padding:0 20px 60px}
 .tag.topic{background:var(--topic);color:#fff;font-weight:600}
 .tag.game{border:1px solid var(--ball);color:#6d7a12}
 .tag.branch{background:var(--lantern);color:#fff}
+.tag.save{border:1px solid var(--lantern);color:var(--lantern);font-weight:600}
 .tag.loose{border:1px dashed var(--ink-2);color:var(--ink-2)}
 
 /* 分歧的另一条分支：嵌在主选择下面的灰框，不再和主选择平级 */
@@ -663,6 +664,7 @@ function bodyHTML(s, isAlt){
   }
   const tags = [
     (s.branch && !isAlt) ? `<span class="tag branch">分歧 · 先存档</span>` : "",
+    (s.save && !isAlt) ? `<span class="tag save">建议先存档</span>` : "",
     ...gainChips(s.gain),
     ...chips,
     s.game ? `<span class="tag game">小游戏</span>` : "",

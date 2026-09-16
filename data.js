@@ -7538,7 +7538,8 @@ const DATA = {
        "gain": "",
        "branch": false,
        "cg": false,
-       "game": false
+       "game": false,
+       "save": true
       },
       {
        "date": "8/30",
@@ -8067,7 +8068,8 @@ const DATA = {
        "gain": "",
        "branch": false,
        "cg": false,
-       "game": false
+       "game": false,
+       "save": true
       },
       {
        "date": "8/27",

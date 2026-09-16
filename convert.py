@@ -76,6 +76,27 @@ EXTRA_TIPS = {
 }
 
 
+# 建议存档点：表格里没有这一列，写在这里。按「学院·角色」挂，值是「日期 时段」，
+# 时段可以省略，省略时标在那天的第一个回合上。会在时间轴上挂一个「建议先存档」标签。
+SAVE_POINTS = {
+    "立海大附属中学·仁王雅治": ["8/27 晨"],
+    "立海大附属中学·柳莲二": ["8/30 晨"],
+}
+
+
+def mark_saves(sname, cname, rows):
+    for spec in SAVE_POINTS.get(f"{sname}·{cname}", []):
+        date, _, time = spec.partition(" ")
+        time = time.strip()
+        for r in rows:
+            if r["date"] == date and (not time or r["time"] == time):
+                r["save"] = True
+                break
+        else:
+            print(f"  ! {sname} {cname} 的存档点「{spec}」在表里找不到对应回合")
+    return rows
+
+
 def blank(sname, cname, out_dir):
     """还没整理的角色：只有名字和头像，正文那边会显示「待补充」。"""
     return {
@@ -244,7 +265,7 @@ def main():
                 "tip": norm_note(tip),
                 "notes": side_notes + EXTRA_TIPS.get(f"{sname}·{cname}", []),
                 "jealousy": clean(ws["J3"].value).replace("嫉妒：", ""),
-                "steps": rows,
+                "steps": mark_saves(sname, cname, rows),
                 "affinity": affinity,
                 "extra": extra,
                 "todo": not rows,
