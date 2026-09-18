@@ -84,6 +84,32 @@ SAVE_POINTS = {
 }
 
 
+# 嫉妒类型（官方表）。每个类型对应各好感度区间被撞见时的好感度扣减；
+# None 表示该格数值还没确认。角色的嫉妒信息以这张表为准，表格 J3 只作兜底。
+JEALOUSY_BANDS = ["0–10", "11–30", "31–70", "71–90", "91–100"]
+JEALOUSY_TYPES = {
+    "完全不在意": [0, 0, 0, 0, 0],
+    "稍微在意": [0, 0, -1, -3, -6],
+    "比较在意": [0, -1, -5, -8, -10],
+    "嫉妒心强": [0, -5, -10, -15, -20],
+    "只在意喜欢的人": [0, 0, -1, -15, -20],
+}
+JEALOUSY_BY_TYPE = {
+    "完全不在意": [
+        "手塚国光", "不二周助", "橘桔平", "坛太一", "芥川慈郎", "天根光", "柳莲二", "仁王雅治", "柳生比吕士",
+        "幸村精市"],
+    "稍微在意": [
+        "河村隆", "乾贞治", "赤澤吉朗", "千石清纯", "忍足侑士", "宍户亮", "黑羽春风", "真田弦一郎"],
+    "比较在意": [
+        "大石秀一郎", "桃城武", "神尾アキラ", "日吉若", "佐伯虎次郎", "丸井文太"],
+    "嫉妒心强": [
+        "菊丸英二", "観月はじめ", "不二裕太", "向日岳人", "凤长太郎"],
+    "只在意喜欢的人": [
+        "越前龙马", "海堂熏", "伊武深司", "亚久津仁", "迹部景吾", "切原赤也"],
+}
+JEALOUSY = {n: t for t, ns in JEALOUSY_BY_TYPE.items() for n in ns}
+
+
 # 表格 A 列打了 * 但其实不是当场二选一的回合，在这里取消掉。
 # 如果你把表格里那个 * 删掉了，这里对应的行也可以删。
 NOT_BRANCH = {
@@ -130,7 +156,8 @@ def blank(sname, cname, out_dir):
         "portrait": asset("portrait", cname, out_dir),
         "id": f"{sname}·{cname}",
         "topics": [], "tip": "", "notes": EXTRA_TIPS.get(f"{sname}·{cname}", []),
-        "jealousy": "",
+        "jealousy": JEALOUSY.get(cname, ""),
+        "jealousyHit": JEALOUSY_TYPES.get(JEALOUSY.get(cname, "")),
         "steps": [], "affinity": {"head": [], "rows": []}, "extra": None,
         "todo": True,
     }
@@ -288,7 +315,8 @@ def main():
                 "topics": topics,
                 "tip": norm_note(tip),
                 "notes": side_notes + EXTRA_TIPS.get(f"{sname}·{cname}", []),
-                "jealousy": clean(ws["J3"].value).replace("嫉妒：", ""),
+                "jealousy": JEALOUSY.get(cname) or clean(ws["J3"].value).replace("嫉妒：", ""),
+                "jealousyHit": JEALOUSY_TYPES.get(JEALOUSY.get(cname, "")),
                 "steps": mark_saves(sname, cname, rows),
                 "affinity": affinity,
                 "extra": extra,

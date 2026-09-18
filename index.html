@@ -142,6 +142,9 @@ main{max-width:880px;margin:0 auto;padding:0 20px 60px}
   margin:-8px -4px 0 18px}
 .brief h2{margin:0;font-size:22px;letter-spacing:.08em}
 .meta{margin:6px 0 0;color:var(--ink-2);font-size:13.5px}
+.jea{margin:5px 0 0;font-size:12.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.jea span{white-space:nowrap;margin-right:12px}
+.jea i{font-style:normal;color:var(--lantern);font-weight:600}
 .topics{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0;padding:0;list-style:none}
 .topics li{border:1px solid var(--rule);background:var(--paper-2);border-radius:var(--radius);padding:3px 9px;font-size:12.5px}
 
@@ -293,6 +296,7 @@ footer a:hover{color:var(--lantern)}
       <img class="portrait" id="cportrait" alt="" hidden>
       <h2 id="cname"></h2>
       <p class="meta" id="cmeta"></p>
+      <p class="jea" id="cjea"></p>
       <ul class="topics" id="ctopics"></ul>
       <div id="ctip" style="margin-top:10px"></div>
     </section>
@@ -398,6 +402,7 @@ function toggleStep(id, i){
 }
 
 /* 游戏内是虚拟日历：会期第一天 8/22 固定为周一，往后顺推 */
+const JEALOUSY_BANDS = ["0–10", "11–30", "31–70", "71–90", "91–100"];
 const DAY0 = [8, 22], DAY0_WEEK = 1;
 function weekday(md){
   const m = /^(\d{1,2})\/(\d{1,2})$/.exec(String(md).trim());
@@ -554,10 +559,22 @@ function render(){
   document.title = c.name + " · 学院祭的王子们全角色攻略";
   el("cname").textContent = c.name;
   const empty = !c.steps.length;
-  el("cmeta").textContent = empty
-    ? c.school + "　攻略待补充"
-    : c.school + "　嫉妒程度：" + (c.jealousy || "—");
+  el("cmeta").textContent = [
+    c.school,
+    empty ? "攻略待补充" : "",
+    c.jealousy ? "嫉妒：" + c.jealousy : (empty ? "" : "嫉妒：—"),
+  ].filter(Boolean).join("　");
   document.querySelector(".tools").hidden = empty;
+
+  /* 嫉妒：被撞见时按好感度区间扣的好感度，0 的区间不列 */
+  const hit = c.jealousyHit;
+  const cells = (hit || []).map((v, i) => [JEALOUSY_BANDS[i], v])
+    .filter(([, v]) => v !== 0);
+  el("cjea").innerHTML = !hit ? ""
+    : cells.length === 0 ? "嫉妒不会扣好感度"
+    : "被撞见时扣好感度　" + cells.map(([band, v]) =>
+        `<span>${band} <i>${v === null ? "?" : "−" + Math.abs(v)}</i></span>`).join("");
+  el("cjea").hidden = !hit;
   el("ctopics").innerHTML = c.topics.map(t=>`<li>${esc(t)}</li>`).join("");
   /* c.tip 来自表格 C3 的「丨」之后，c.notes 是 convert.py 里额外挂的说明 */
   el("ctip").innerHTML = [c.tip, ...(c.notes || [])]

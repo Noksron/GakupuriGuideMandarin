@@ -14,7 +14,7 @@ const DATA = {
       "午睡的话题 +6"
      ],
      "tip": "",
-     "jealousy": "喜欢上的话就会很容易嫉妒",
+     "jealousy": "只在意喜欢的人",
      "steps": [
       {
        "date": "8/22",
@@ -337,7 +337,14 @@ const DATA = {
      "img": "assets/avatar/越前龙马.png",
      "portrait": "assets/portrait/越前龙马.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      -1,
+      -15,
+      -20
+     ]
     },
     {
      "name": "手塚国光",
@@ -348,7 +355,7 @@ const DATA = {
       "中暑的话题 +7"
      ],
      "tip": "",
-     "jealousy": "完全不嫉妒",
+     "jealousy": "完全不在意",
      "steps": [
       {
        "date": "8/22",
@@ -632,7 +639,14 @@ const DATA = {
      "img": "assets/avatar/手塚国光.png",
      "portrait": "assets/portrait/手塚国光.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
     },
     {
      "name": "大石秀一郎",
@@ -643,7 +657,7 @@ const DATA = {
       "水族馆的话题 +7"
      ],
      "tip": "",
-     "jealousy": "非常容易嫉妒",
+     "jealousy": "比较在意",
      "steps": [
       {
        "date": "8/22",
@@ -927,7 +941,14 @@ const DATA = {
      "img": "assets/avatar/大石秀一郎.png",
      "portrait": "assets/portrait/大石秀一郎.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      -1,
+      -5,
+      -8,
+      -10
+     ]
     },
     {
      "name": "不二周助",
@@ -938,7 +959,7 @@ const DATA = {
       "组合的话题 +6"
      ],
      "tip": "",
-     "jealousy": "完全不嫉妒",
+     "jealousy": "完全不在意",
      "steps": [
       {
        "date": "8/22",
@@ -1248,7 +1269,14 @@ const DATA = {
      "img": "assets/avatar/不二周助.png",
      "portrait": "assets/portrait/不二周助.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
     },
     {
      "name": "菊丸英二",
@@ -1260,7 +1288,7 @@ const DATA = {
       "舞蹈的话题 +5"
      ],
      "tip": "",
-     "jealousy": "超级嫉妒",
+     "jealousy": "嫉妒心强",
      "steps": [
       {
        "date": "8/22",
@@ -1531,7 +1559,14 @@ const DATA = {
      "img": "assets/avatar/菊丸英二.png",
      "portrait": "assets/portrait/菊丸英二.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      -5,
+      -10,
+      -15,
+      -20
+     ]
     },
     {
      "name": "河村隆",
@@ -1541,7 +1576,7 @@ const DATA = {
       "手巾的话题 +6 （好感度30以上后在室内网球场出现）"
      ],
      "tip": "",
-     "jealousy": "有点嫉妒",
+     "jealousy": "稍微在意",
      "steps": [
       {
        "date": "8/22",
@@ -1838,7 +1873,14 @@ const DATA = {
      "img": "assets/avatar/河村隆.png",
      "portrait": "assets/portrait/河村隆.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      -1,
+      -3,
+      -6
+     ]
     },
     {
      "name": "乾贞治",
@@ -1849,7 +1891,7 @@ const DATA = {
       "地震的话题 +6"
      ],
      "tip": "",
-     "jealousy": "有点嫉妒",
+     "jealousy": "稍微在意",
      "steps": [
       {
        "date": "8/22",
@@ -2133,7 +2175,14 @@ const DATA = {
      "img": "assets/avatar/乾贞治.png",
      "portrait": "assets/portrait/乾贞治.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      -1,
+      -3,
+      -6
+     ]
     },
     {
      "name": "桃城武",
@@ -2144,7 +2193,7 @@ const DATA = {
       "手工便当的话题 +7"
      ],
      "tip": "",
-     "jealousy": "非常容易嫉妒",
+     "jealousy": "比较在意",
      "steps": [
       {
        "date": "8/22",
@@ -2415,7 +2464,14 @@ const DATA = {
      "img": "assets/avatar/桃城武.png",
      "portrait": "assets/portrait/桃城武.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      -1,
+      -5,
+      -8,
+      -10
+     ]
     },
     {
      "name": "海堂熏",
@@ -2426,7 +2482,7 @@ const DATA = {
       "酸奶的话题 +7"
      ],
      "tip": "",
-     "jealousy": "喜欢上的话就会很容易嫉妒",
+     "jealousy": "只在意喜欢的人",
      "steps": [
       {
        "date": "8/22",
@@ -2756,7 +2812,14 @@ const DATA = {
      "img": "assets/avatar/海堂熏.png",
      "portrait": "assets/portrait/海堂熏.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      -1,
+      -15,
+      -20
+     ]
     }
    ]
   },
@@ -2774,7 +2837,7 @@ const DATA = {
       "练习和太鼓的话题 +7"
      ],
      "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“藏青色”可提升好感度+1",
-     "jealousy": "完全不嫉妒",
+     "jealousy": "完全不在意",
      "steps": [
       {
        "date": "8/22",
@@ -3045,7 +3108,14 @@ const DATA = {
      "img": "assets/avatar/橘桔平.png",
      "portrait": "assets/portrait/橘桔平.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
     },
     {
      "name": "神尾アキラ",
@@ -3056,7 +3126,7 @@ const DATA = {
       "生日的话题 +6"
      ],
      "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“荧光黄绿色”可提升好感度+1",
-     "jealousy": "非常容易嫉妒",
+     "jealousy": "比较在意",
      "steps": [
       {
        "date": "8/22",
@@ -3340,7 +3410,14 @@ const DATA = {
      "img": "assets/avatar/神尾アキラ.png",
      "portrait": "assets/portrait/神尾アキラ.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      -1,
+      -5,
+      -8,
+      -10
+     ]
     },
     {
      "name": "伊武深司",
@@ -3351,7 +3428,7 @@ const DATA = {
       "乐观主义的话题 +5"
      ],
      "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“灰色”可提升好感度+1",
-     "jealousy": "喜欢上的话就会很容易嫉妒",
+     "jealousy": "只在意喜欢的人",
      "steps": [
       {
        "date": "8/22",
@@ -3596,7 +3673,14 @@ const DATA = {
      "img": "assets/avatar/伊武深司.png",
      "portrait": "assets/portrait/伊武深司.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      -1,
+      -15,
+      -20
+     ]
     }
    ]
   },
@@ -3614,7 +3698,7 @@ const DATA = {
       "信长剧的话题（仅可使用一次） +6"
      ],
      "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“红色”可提升好感度+1",
-     "jealousy": "有点嫉妒",
+     "jealousy": "稍微在意",
      "steps": [
       {
        "date": "8/22",
@@ -3885,7 +3969,14 @@ const DATA = {
      "img": "assets/avatar/赤澤吉朗.png",
      "portrait": "assets/portrait/赤澤吉朗.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      -1,
+      -3,
+      -6
+     ]
     },
     {
      "name": "観月はじめ",
@@ -3896,7 +3987,7 @@ const DATA = {
       "剧本的话题 +7"
      ],
      "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“白色”可提升好感度+1",
-     "jealousy": "超级嫉妒",
+     "jealousy": "嫉妒心强",
      "steps": [
       {
        "date": "8/22",
@@ -4193,7 +4284,14 @@ const DATA = {
      "img": "assets/avatar/観月はじめ.png",
      "portrait": "assets/portrait/観月はじめ.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      -5,
+      -10,
+      -15,
+      -20
+     ]
     },
     {
      "name": "不二裕太",
@@ -4204,7 +4302,7 @@ const DATA = {
       "哈姆雷特剧的话题 +7"
      ],
      "tip": "8月22日至24日期间，查看本馆-餐厅&小卖部吧台区域→选择“银蓝色”可提升好感度+1",
-     "jealousy": "超级嫉妒",
+     "jealousy": "嫉妒心强",
      "steps": [
       {
        "date": "8/22",
@@ -4488,7 +4586,14 @@ const DATA = {
      "img": "assets/avatar/不二裕太.png",
      "portrait": "assets/portrait/不二裕太.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      -5,
+      -10,
+      -15,
+      -20
+     ]
     }
    ]
   },
@@ -4505,7 +4610,7 @@ const DATA = {
      "id": "山吹中学·亚久津仁",
      "topics": [],
      "tip": "",
-     "jealousy": "",
+     "jealousy": "只在意喜欢的人",
      "steps": [],
      "affinity": {
       "head": [],
@@ -4513,7 +4618,14 @@ const DATA = {
      },
      "extra": null,
      "todo": true,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      -1,
+      -15,
+      -20
+     ]
     },
     {
      "name": "千石清纯",
@@ -4523,7 +4635,7 @@ const DATA = {
      "id": "山吹中学·千石清纯",
      "topics": [],
      "tip": "",
-     "jealousy": "",
+     "jealousy": "稍微在意",
      "steps": [],
      "affinity": {
       "head": [],
@@ -4531,7 +4643,14 @@ const DATA = {
      },
      "extra": null,
      "todo": true,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      -1,
+      -3,
+      -6
+     ]
     },
     {
      "name": "坛太一",
@@ -4541,7 +4660,7 @@ const DATA = {
      "id": "山吹中学·坛太一",
      "topics": [],
      "tip": "",
-     "jealousy": "",
+     "jealousy": "完全不在意",
      "steps": [],
      "affinity": {
       "head": [],
@@ -4549,7 +4668,14 @@ const DATA = {
      },
      "extra": null,
      "todo": true,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
     }
    ]
   },
@@ -4567,7 +4693,7 @@ const DATA = {
       "纳豆的话题 +6"
      ],
      "tip": "好感度71以上时使用“时尚的话题”→ 获得CG",
-     "jealousy": "喜欢上的话就会很容易嫉妒",
+     "jealousy": "只在意喜欢的人",
      "steps": [
       {
        "date": "8/22",
@@ -4905,6 +5031,13 @@ const DATA = {
      "todo": false,
      "notes": [
       "奖励CG为「学院祭扣杀BINGO」中概率获得"
+     ],
+     "jealousyHit": [
+      0,
+      0,
+      -1,
+      -15,
+      -20
      ]
     },
     {
@@ -4917,7 +5050,7 @@ const DATA = {
       "和太鼓的话题 +6"
      ],
      "tip": "",
-     "jealousy": "有点嫉妒",
+     "jealousy": "稍微在意",
      "steps": [
       {
        "date": "8/22",
@@ -5216,6 +5349,13 @@ const DATA = {
      "todo": false,
      "notes": [
       "奖励CG为「学院祭扣杀BINGO」中概率获得"
+     ],
+     "jealousyHit": [
+      0,
+      0,
+      -1,
+      -3,
+      -6
      ]
     },
     {
@@ -5227,7 +5367,7 @@ const DATA = {
       "纳豆烧的话题 +6"
      ],
      "tip": "",
-     "jealousy": "超级嫉妒",
+     "jealousy": "嫉妒心强",
      "steps": [
       {
        "date": "8/22",
@@ -5485,7 +5625,14 @@ const DATA = {
      "img": "assets/avatar/向日岳人.png",
      "portrait": "assets/portrait/向日岳人.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      -5,
+      -10,
+      -15,
+      -20
+     ]
     },
     {
      "name": "凤长太郎",
@@ -5496,7 +5643,7 @@ const DATA = {
       "乐队的话题 +6"
      ],
      "tip": "",
-     "jealousy": "超·级·嫉·妒（目测好感度15开始就…",
+     "jealousy": "嫉妒心强",
      "steps": [
       {
        "date": "8/22",
@@ -5780,7 +5927,14 @@ const DATA = {
      "img": "assets/avatar/凤长太郎.png",
      "portrait": "assets/portrait/凤长太郎.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      -5,
+      -10,
+      -15,
+      -20
+     ]
     },
     {
      "name": "宍户亮",
@@ -5792,7 +5946,7 @@ const DATA = {
       "组合的话题 +6"
      ],
      "tip": "",
-     "jealousy": "有点嫉妒",
+     "jealousy": "稍微在意",
      "steps": [
       {
        "date": "8/22",
@@ -6089,7 +6243,14 @@ const DATA = {
      "img": "assets/avatar/宍户亮.png",
      "portrait": "assets/portrait/宍户亮.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      -1,
+      -3,
+      -6
+     ]
     },
     {
      "name": "日吉若",
@@ -6100,7 +6261,7 @@ const DATA = {
       "七大不可思议的话题 +7"
      ],
      "tip": "",
-     "jealousy": "超级嫉妒",
+     "jealousy": "比较在意",
      "steps": [
       {
        "date": "8/22",
@@ -6384,7 +6545,14 @@ const DATA = {
      "img": "assets/avatar/日吉若.png",
      "portrait": "assets/portrait/日吉若.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      -1,
+      -5,
+      -8,
+      -10
+     ]
     },
     {
      "name": "芥川慈郎",
@@ -6395,7 +6563,7 @@ const DATA = {
       "睡眠的话题 +7"
      ],
      "tip": "好感度71以上时使用过“学院祭的话题”，31日约会的对话会有变化",
-     "jealousy": "完全不嫉妒",
+     "jealousy": "完全不在意",
      "steps": [
       {
        "date": "8/22",
@@ -6666,7 +6834,14 @@ const DATA = {
      "img": "assets/avatar/芥川慈郎.png",
      "portrait": "assets/portrait/芥川慈郎.webp",
      "todo": false,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
     }
    ]
   },
@@ -6683,7 +6858,7 @@ const DATA = {
      "id": "六角中学·天根光",
      "topics": [],
      "tip": "",
-     "jealousy": "",
+     "jealousy": "完全不在意",
      "steps": [],
      "affinity": {
       "head": [],
@@ -6691,7 +6866,14 @@ const DATA = {
      },
      "extra": null,
      "todo": true,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
     },
     {
      "name": "佐伯虎次郎",
@@ -6701,7 +6883,7 @@ const DATA = {
      "id": "六角中学·佐伯虎次郎",
      "topics": [],
      "tip": "",
-     "jealousy": "",
+     "jealousy": "比较在意",
      "steps": [],
      "affinity": {
       "head": [],
@@ -6709,7 +6891,14 @@ const DATA = {
      },
      "extra": null,
      "todo": true,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      -1,
+      -5,
+      -8,
+      -10
+     ]
     },
     {
      "name": "黑羽春风",
@@ -6719,7 +6908,7 @@ const DATA = {
      "id": "六角中学·黑羽春风",
      "topics": [],
      "tip": "",
-     "jealousy": "",
+     "jealousy": "稍微在意",
      "steps": [],
      "affinity": {
       "head": [],
@@ -6727,7 +6916,14 @@ const DATA = {
      },
      "extra": null,
      "todo": true,
-     "notes": []
+     "notes": [],
+     "jealousyHit": [
+      0,
+      0,
+      -1,
+      -3,
+      -6
+     ]
     }
    ]
   },
@@ -6750,7 +6946,7 @@ const DATA = {
      "notes": [
       "把电话号码告诉切原以外的角色就无法迎来结局；幸村登场后会自动告知电话号码，所以多周目的话20日（晨）的对话要选“不太清楚～”以避免其登场"
      ],
-     "jealousy": "喜欢上的话就会很容易嫉妒",
+     "jealousy": "只在意喜欢的人",
      "steps": [
       {
        "date": "8/22",
@@ -7031,7 +7227,14 @@ const DATA = {
       ]
      },
      "extra": null,
-     "todo": false
+     "todo": false,
+     "jealousyHit": [
+      0,
+      0,
+      -1,
+      -15,
+      -20
+     ]
     },
     {
      "name": "真田弦一郎",
@@ -7044,7 +7247,7 @@ const DATA = {
      ],
      "tip": "",
      "notes": [],
-     "jealousy": "有点嫉妒",
+     "jealousy": "稍微在意",
      "steps": [
       {
        "date": "8/23",
@@ -7351,7 +7554,14 @@ const DATA = {
       ]
      },
      "extra": null,
-     "todo": false
+     "todo": false,
+     "jealousyHit": [
+      0,
+      0,
+      -1,
+      -3,
+      -6
+     ]
     },
     {
      "name": "柳莲二",
@@ -7369,7 +7579,7 @@ const DATA = {
       "要回收未满100的结局CG，需在30日（夕）前把好感度压在89以下（31日约会会+10）",
       "若涨过头，可用“对话→取消”（−3）或拒绝一起放学（−2）等方式降低"
      ],
-     "jealousy": "完全不嫉妒",
+     "jealousy": "完全不在意",
      "steps": [
       {
        "date": "8/22",
@@ -7638,7 +7848,14 @@ const DATA = {
       ]
      },
      "extra": null,
-     "todo": false
+     "todo": false,
+     "jealousyHit": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
     },
     {
      "name": "丸井文太",
@@ -7653,7 +7870,7 @@ const DATA = {
      ],
      "tip": "",
      "notes": [],
-     "jealousy": "非常容易嫉妒",
+     "jealousy": "比较在意",
      "steps": [
       {
        "date": "8/22",
@@ -7934,7 +8151,14 @@ const DATA = {
       ]
      },
      "extra": null,
-     "todo": false
+     "todo": false,
+     "jealousyHit": [
+      0,
+      -1,
+      -5,
+      -8,
+      -10
+     ]
     },
     {
      "name": "仁王雅治",
@@ -7951,7 +8175,7 @@ const DATA = {
       "使用特殊话题的数量会改变31日CG：两个都用 → 31日私服CG；只用一个或都不用 → 31日制服CG",
       "建议27日（夕）前保留其中一个不用并存档，方便两种CG都回收"
      ],
-     "jealousy": "完全不嫉妒",
+     "jealousy": "完全不在意",
      "steps": [
       {
        "date": "8/22",
@@ -8233,7 +8457,14 @@ const DATA = {
       ]
      },
      "extra": null,
-     "todo": false
+     "todo": false,
+     "jealousyHit": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
     },
     {
      "name": "柳生比吕士",
@@ -8247,7 +8478,7 @@ const DATA = {
      ],
      "tip": "",
      "notes": [],
-     "jealousy": "完全不嫉妒",
+     "jealousy": "完全不在意",
      "steps": [
       {
        "date": "8/22",
@@ -8528,7 +8759,14 @@ const DATA = {
       ]
      },
      "extra": null,
-     "todo": false
+     "todo": false,
+     "jealousyHit": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
     },
     {
      "name": "幸村精市",
@@ -8539,7 +8777,7 @@ const DATA = {
      "topics": [],
      "tip": "通关任意一名立海成员后再从开头重新开始，会追加20日的对话；所有事件均为自动发生",
      "notes": [],
-     "jealousy": "",
+     "jealousy": "完全不在意",
      "steps": [
       {
        "date": "8/20",
@@ -8651,7 +8889,14 @@ const DATA = {
       "rows": []
      },
      "extra": null,
-     "todo": false
+     "todo": false,
+     "jealousyHit": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
     }
    ]
   },
@@ -8676,7 +8921,8 @@ const DATA = {
      },
      "extra": null,
      "todo": true,
-     "notes": []
+     "notes": [],
+     "jealousyHit": null
     },
     {
      "name": "千岁千里",
@@ -8694,7 +8940,8 @@ const DATA = {
      },
      "extra": null,
      "todo": true,
-     "notes": []
+     "notes": [],
+     "jealousyHit": null
     },
     {
      "name": "白石藏之介",
@@ -8712,7 +8959,8 @@ const DATA = {
      },
      "extra": null,
      "todo": true,
-     "notes": []
+     "notes": [],
+     "jealousyHit": null
     }
    ]
   }
