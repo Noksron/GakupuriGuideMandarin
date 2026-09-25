@@ -13,13 +13,11 @@ Excel 约定（每个角色一个工作表）:
     J8:V11            好感度区间 × 话题加成表
     J13 起的小表      可选的备用路线（如海堂的「制服cg回收」）
 """
+import argparse
 import json
 import os
 import re
-import sys
-from openpyxl import load_workbook
-from openpyxl.utils import get_column_letter
-from openpyxl.utils.datetime import from_excel
+from datetime import datetime, timedelta
 
 TIME_ALIAS = {"朝": "晨"}          # 统一写法
 
@@ -136,31 +134,32 @@ def mark_saves(sname, cname, rows):
             r["branch"] = False
 
     for spec in SAVE_POINTS.get(f"{sname}·{cname}", []):
-        date, _, time = spec.partition(" ")
-        time = time.strip()
-        for r in rows:
-            if r["date"] == date and (not time or r["time"] == time):
-                r["save"] = True
-                break
-        else:
+        r = _find(rows, spec)
+        if r is None:
             print(f"  ! {sname} {cname} 的存档点「{spec}」在表里找不到对应回合")
+        else:
+            r["save"] = True
     return rows
 
 
-def blank(sname, cname, out_dir):
-    """还没整理的角色：只有名字和头像，正文那边会显示「待补充」。"""
-    return {
+def character(sname, cname, out_dir, sheet_name=None, **fields):
+    """一个角色的完整字段。只传名字就是还没整理的角色（正文显示「待补充」），
+    表格里读到的内容通过 fields 覆盖进来。"""
+    c = {
         "name": cname,
         "ini": INITIALS.get(cname, ""),
-        "img": asset("avatar", cname, out_dir, (".png", ".webp")),
-        "portrait": asset("portrait", cname, out_dir),
-        "id": f"{sname}·{cname}",
+        "img": asset("avatar", cname, out_dir, (".png", ".webp")),  # 侧栏头像
+        "portrait": asset("portrait", cname, out_dir),               # 正文立绘
+        # id 是浏览器里勾选进度的键，改了会让已有进度对不上
+        "id": f"{sname}·{sheet_name or cname}",
         "topics": [], "tip": "", "notes": EXTRA_TIPS.get(f"{sname}·{cname}", []),
         "jealousy": JEALOUSY.get(cname, ""),
         "jealousyHit": JEALOUSY_TYPES.get(JEALOUSY.get(cname, "")),
         "steps": [], "affinity": {"head": [], "rows": []}, "extra": None,
-        "todo": True,
     }
+    c.update(fields)
+    c["todo"] = not c["steps"]
+    return c
 
 
 def asset(kind, name, out_dir, exts=(".webp", ".png")):
@@ -187,7 +186,7 @@ def school_of(path):
 def norm_date(v):
     """46256 -> ('8/22', False)；'（8/25）' -> ('8/25', True) 非固定日期。"""
     if isinstance(v, (int, float)):
-        d = from_excel(v)
+        d = datetime(1899, 12, 30) + timedelta(days=v)   # Excel 日期序列号
         return f"{d.month}/{d.day}", False
     s = str(v).strip().strip("（）()")
     return s, True
@@ -215,7 +214,7 @@ def parse_sheet(ws):
     aff_head, extra_head, extra_rows, side_notes = [], "", [], []
 
     for r in ws.iter_rows(min_row=6, max_row=ws.max_row):
-        cell = {get_column_letter(c.column): c.value for c in r}
+        cell = {c.column_letter: c.value for c in r}
 
         # ---- 右侧：好感度加成表 ----
         j = cell.get("J")
@@ -288,17 +287,20 @@ def split_topics(cell):
 
 
 def main():
-    args = [a for a in sys.argv[1:] if a != "-o"]
-    out = "data.js"
-    if "-o" in sys.argv:
-        out = sys.argv[sys.argv.index("-o") + 1]
-        args = [a for a in args if a != out]
+    ap = argparse.ArgumentParser(description="把攻略 Excel 转成网页用的 data.js")
+    ap.add_argument("xlsx", nargs="+", help="各学院的攻略表")
+    ap.add_argument("-o", dest="out", default="data.js", help="输出文件（默认 data.js）")
+    opts = ap.parse_args()
+    out = opts.out
+
+    # 放到这里导入：make_assets.py 只借用 ROSTER，不需要装 openpyxl
+    from openpyxl import load_workbook
 
     out_dir = os.path.dirname(os.path.abspath(out))
 
     # 先把所有 Excel 读进来，再按名单的顺序拼装
     parsed = {}
-    for src in args:
+    for src in opts.xlsx:
         sname, crest = school_of(src)
         wb = load_workbook(src, data_only=True)
         for name in wb.sheetnames:
@@ -306,22 +308,16 @@ def main():
             rows, affinity, extra, side_notes = parse_sheet(ws)
             topics, tip = split_topics(ws["C3"].value)
             cname = (ws["B2"].value or name).strip()
-            parsed[(sname, cname)] = {
-                "name": cname,
-                "ini": INITIALS.get(cname, ""),
-                "img": asset("avatar", cname, out_dir, (".png", ".webp")),  # 侧栏头像
-                "portrait": asset("portrait", cname, out_dir),  # 正文立绘
-                "id": f"{sname}·{name}",
-                "topics": topics,
-                "tip": norm_note(tip),
-                "notes": side_notes + EXTRA_TIPS.get(f"{sname}·{cname}", []),
-                "jealousy": JEALOUSY.get(cname) or clean(ws["J3"].value).replace("嫉妒：", ""),
-                "jealousyHit": JEALOUSY_TYPES.get(JEALOUSY.get(cname, "")),
-                "steps": mark_saves(sname, cname, rows),
-                "affinity": affinity,
-                "extra": extra,
-                "todo": not rows,
-            }
+            parsed[(sname, cname)] = character(
+                sname, cname, out_dir, sheet_name=name,
+                topics=topics,
+                tip=norm_note(tip),
+                notes=side_notes + EXTRA_TIPS.get(f"{sname}·{cname}", []),
+                jealousy=JEALOUSY.get(cname) or clean(ws["J3"].value).replace("嫉妒：", ""),
+                steps=mark_saves(sname, cname, rows),
+                affinity=affinity,
+                extra=extra,
+            )
 
     schools, used = [], set()
     for sname, crest, color, names in ROSTER:
@@ -330,7 +326,7 @@ def main():
             got = parsed.get((sname, cname))
             if got:
                 used.add((sname, cname))
-            chars.append(got or blank(sname, cname, out_dir))
+            chars.append(got or character(sname, cname, out_dir))
         schools.append({"name": sname, "crest": crest, "color": color, "chars": chars})
 
     # 名单上没有的（多半是 Excel 里名字写法不一样），单独挂到对应学院末尾并提醒

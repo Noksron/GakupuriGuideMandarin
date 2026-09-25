@@ -100,7 +100,6 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .roster li.todo button{opacity:.6}
 .roster li.todo button:hover,.roster li.todo button[aria-current="true"]{opacity:1}
 .roster li.todo .prog{color:#6b7794}
-.roster li.cleared .ini::after{content:"";position:absolute}
 .rail-foot{flex:0 0 auto;border-top:1px solid rgba(255,255,255,.14);padding:10px 0 12px 15px}
 .rail-foot button{font-size:12px;color:#8595b5;white-space:nowrap}
 .rail-foot button:hover{color:#fff}
@@ -127,10 +126,9 @@ header{background-color:var(--ink);color:var(--paper);padding:30px 20px 26px;
   background-size:auto,cover;
   background-position:center,center 58%;
   background-repeat:no-repeat}
-.logo{cursor:pointer}
 .wrap{max-width:880px;margin:0 auto}
 h1{margin:0;font-size:25px;letter-spacing:.06em}
-.logo{display:block;width:214px;max-width:70%;height:auto}
+.logo{display:block;width:214px;max-width:70%;height:auto;cursor:pointer}
 .sub{margin:6px 0 0;color:#cfd6e6;font-size:13px;letter-spacing:.04em;
   text-shadow:0 1px 3px rgba(10,16,32,.5)}
 .sub b{color:var(--paper);font-weight:600}
@@ -337,12 +335,6 @@ footer a:hover{color:var(--lantern)}
 <script src="data.js"></script>
 <script>
 const WEEK = ["日","一","二","三","四","五","六"];
-/* 各校官网用色。convert.py 会把 school.color 一起写进 data.js，这里是兜底。 */
-const SCHOOL_COLOR = {
-  "青春学园":"#595ccc", "冰帝学园":"#587d95", "圣鲁道夫学院":"#5e504b",
-  "不动峰中学":"#646464", "山吹中学":"#5c8161", "立海大附属":"#cab134",
-  "立海大附属中学":"#cab134", "六角中学":"#804749", "四天宝寺中学":"#89b16e"
-};
 const DEEP = [20, 24, 31];                    // 压深时往这个近黑色靠
 const hex2rgb = h => { const n = parseInt(h.slice(1), 16); return [n>>16 & 255, n>>8 & 255, n & 255]; };
 const rgb2hex = c => "#" + c.map(v => Math.round(v).toString(16).padStart(2, "0")).join("");
@@ -350,6 +342,7 @@ function lum(c){
   const f = v => (v /= 255) <= .03928 ? v/12.92 : Math.pow((v+.055)/1.055, 2.4);
   return .2126*f(c[0]) + .7152*f(c[1]) + .0722*f(c[2]);
 }
+/* 学院色由 convert.py 的 ROSTER 写进 data.js（school.color） */
 /* 底色深就用白字，底色亮（立海的金、四天宝寺的绿）就用近黑色 */
 function inkOn(hex){ return lum(hex2rgb(hex)) > .30 ? "#14181f" : "#fff"; }
 /* 白底圆徽记上的字：把学院色一路压深到白底上看得清为止 */
@@ -360,13 +353,13 @@ function deepen(hex){
   return rgb2hex(c);
 }
 function schoolVars(s){
-  const c = s.color || SCHOOL_COLOR[s.name] || "";
+  const c = s.color;
   return c ? `style="--sc:${c};--sc-ink:${inkOn(c)};--sc-deep:${deepen(c)}"` : "";
 }
 const KEY = "gakuensai.progress.v1";
 let cur = 0, filter = "all", openSchool = 0, view = "home";
-/* 打平成一维，方便按序号切换；每项记住所属学院 */
-const CHARS = DATA.schools.flatMap(s => s.chars.map(c => ({...c, school: s.name})));
+/* 打平成一维，方便按序号切换；每项记住所属学院（名字和序号） */
+const CHARS = DATA.schools.flatMap((s, si) => s.chars.map(c => ({...c, school: s.name, si})));
 
 /* ---------- 进度存储：localStorage，不可用时退回内存 ---------- */
 const store = (() => {
@@ -390,8 +383,16 @@ const store = (() => {
 let progress = store.load();          // { 角色id: [步骤序号, ...] }
 
 const el = id => document.getElementById(id);
-const esc = s => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const doneOf = id => new Set(progress[id] || []);
+
+/* 侧栏和首页卡片共用的进度状态 */
+function statusOf(c){
+  const n = doneOf(c.id).size, t = c.steps.length;
+  if (!t) return {cls: "todo", text: "待补充"};
+  if (n === t) return {cls: "cleared", text: "已通关"};
+  return {cls: "", text: n + "/" + t};
+}
 
 function toggleStep(id, i){
   const set = doneOf(id);
@@ -417,7 +418,7 @@ function buildRoster(){
   const onHome = view === "home";
   el("roster").innerHTML = DATA.schools.map((s, si) => {
     const open = si === openSchool;
-    const hasCur = !onHome && s.chars.some((_, ci) => indexOfChar(si, ci) === cur);
+    const hasCur = !onHome && CHARS[cur].si === si;
     const v = schoolVars(s);
     const head = `<li ${v}><button class="school-btn${hasCur ? " cur" : ""}" data-s="${si}" aria-expanded="${open}">
         <span class="sc">${esc(s.crest)}</span>
@@ -427,45 +428,39 @@ function buildRoster(){
     const rows = s.chars.map(c => {
       i++;
       if (!open) return "";
-      const n = doneOf(c.id).size, total = c.steps.length, label = c.ini || c.name[0];
-      const todo = !total;
+      const st = statusOf(c), label = c.ini || c.name[0];
       const badge = c.img
         ? `<span class="ini img"><img src="${esc(c.img)}" alt="" loading="lazy"
              onerror="this.parentNode.className='ini';this.parentNode.textContent='${esc(label)}'"></span>`
         : `<span class="ini${label.length > 1 ? " ini2" : ""}">${esc(label)}</span>`;
-      return `<li class="char ${todo ? "todo" : n===total ? "cleared" : ""}" ${v}>
+      return `<li class="char ${st.cls}" ${v}>
         <button data-i="${i}" aria-current="${!onHome && i===cur}">
           ${badge}
           <span class="full">${esc(c.name)}</span>
-          <span class="prog">${todo ? "待补充" : n===total ? "已通关" : n + "/" + total}</span>
+          <span class="prog">${st.text}</span>
         </button></li>`;
     }).join("");
     return head + rows;
   }).join("");
 }
 
-/* 第 si 个学院第 ci 个角色在打平数组里的序号 */
-function indexOfChar(si, ci){
-  let n = 0;
-  for (let k = 0; k < si; k++) n += DATA.schools[k].chars.length;
-  return n + ci;
+/* ---------- 路由：角色页挂在网址 #学院·角色 上，刷新、分享链接、浏览器后退都能用 ---------- */
+function route(){
+  let id = "";
+  try { id = decodeURIComponent(location.hash.slice(1)); } catch (e) {}
+  const i = CHARS.findIndex(c => c.id === id);
+  if (i < 0) view = "home";
+  else { cur = i; view = "char"; openSchool = CHARS[i].si; }
+  closeRail(); buildRoster(); render(); window.scrollTo({top:0});
 }
-
-function schoolOfIndex(i){
-  let n = 0;
-  for (let k = 0; k < DATA.schools.length; k++){
-    n += DATA.schools[k].chars.length;
-    if (i < n) return k;
-  }
-  return 0;
+function navigate(hash){
+  if (hash !== location.hash)
+    history.pushState(null, "", hash || location.pathname + location.search);
+  route();
 }
-
-function goHome(){
-  view = "home"; closeRail(); buildRoster(); render(); window.scrollTo({top:0});
-}
-function goChar(i){
-  cur = i; view = "char"; closeRail(); buildRoster(); render(); window.scrollTo({top:0});
-}
+const goHome = () => navigate("");
+const goChar = i => navigate("#" + encodeURIComponent(CHARS[i].id));
+window.addEventListener("popstate", route);
 
 function closeRail(){
   el("rail").classList.remove("open");
@@ -525,15 +520,14 @@ function renderHome(){
   el("homeSchools").innerHTML = DATA.schools.map(s => {
     const rows = s.chars.map(c => {
       i++;
-      const n = doneOf(c.id).size, t = c.steps.length, label = c.ini || c.name[0];
-      const cls = !t ? "todo" : n === t ? "cleared" : "";
+      const st = statusOf(c), label = c.ini || c.name[0];
       const av = c.img
         ? `<span class="av"><img src="${esc(c.img)}" alt="" loading="lazy"
              onerror="this.parentNode.textContent='${esc(label)}'"></span>`
         : `<span class="av">${esc(label)}</span>`;
-      return `<li class="${cls}"><button data-i="${i}">
+      return `<li class="${st.cls}"><button data-i="${i}">
           ${av}<span class="nm">${esc(c.name)}</span>
-          <span class="st">${!t ? "待补充" : n === t ? "已通关" : n + "/" + t}</span>
+          <span class="st">${st.text}</span>
         </button></li>`;
     }).join("");
     return `<section class="scard" ${schoolVars(s)}>
@@ -737,8 +731,7 @@ document.querySelector(".tools").addEventListener("click", e=>{
 if (!store.ok) el("storeNote").textContent =
   "当前浏览器不允许本地存储（无痕模式或被拦截），勾选进度只在这次访问内有效。";
 
-openSchool = schoolOfIndex(cur);
-buildRoster(); render();          /* 默认落在首页，view 初始就是 "home" */
+route();                          /* 网址里没有角色就落在首页 */
 </script>
 </body>
 </html>
