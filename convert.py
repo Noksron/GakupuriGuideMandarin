@@ -74,6 +74,21 @@ EXTRA_TIPS = {
 }
 
 
+# 粗稿：数据已经整理进来，但还没逐条校对，站上会在角色名旁标「粗稿」。
+# 某个角色校对完了，把它从这里删掉即可。
+DRAFT = {
+    "山吹中学·亚久津仁",
+    "山吹中学·千石清纯",
+    "山吹中学·坛太一",
+    "四天宝寺中学·远山金太郎",
+    "四天宝寺中学·千岁千里",
+    "四天宝寺中学·白石藏之介",
+    "六角中学·天根光",
+    "六角中学·佐伯虎次郎",
+    "六角中学·黑羽春风",
+}
+
+
 # 建议存档点：表格里没有这一列，写在这里。按「学院·角色」挂，值是「日期 时段」，
 # 时段可以省略，省略时标在那天的第一个回合上。会在时间轴上挂一个「建议先存档」标签。
 SAVE_POINTS = {
@@ -153,6 +168,7 @@ def character(sname, cname, out_dir, sheet_name=None, **fields):
         # id 是浏览器里勾选进度的键，改了会让已有进度对不上
         "id": f"{sname}·{sheet_name or cname}",
         "topics": [], "tip": "", "notes": EXTRA_TIPS.get(f"{sname}·{cname}", []),
+        "draft": f"{sname}·{cname}" in DRAFT,
         "jealousy": JEALOUSY.get(cname, ""),
         "jealousyHit": JEALOUSY_TYPES.get(JEALOUSY.get(cname, "")),
         "steps": [], "affinity": {"head": [], "rows": []}, "extra": None,

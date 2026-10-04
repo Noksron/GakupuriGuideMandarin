@@ -140,6 +140,14 @@ main{max-width:880px;margin:0 auto;padding:0 20px 60px}
   margin:-8px -4px 0 18px}
 .brief h2{margin:0;font-size:22px;letter-spacing:.08em}
 .meta{margin:6px 0 0;color:var(--ink-2);font-size:13.5px}
+/* 粗稿标记 */
+.dft{display:inline-block;vertical-align:middle;margin-left:7px;padding:1px 6px;
+  border-radius:var(--radius);background:#f2e2bf;color:#7a5406;
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+h2 .dft{font-size:12px;margin-left:10px;vertical-align:5px}
+.roster .dft,.scard .dft{margin-left:5px;padding:0 4px;font-size:10px}
+.dft-note{margin:5px 0 0;font-size:12.5px;color:#7a5406}
 .jea{margin:5px 0 0;font-size:12.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
 .jea span{white-space:nowrap;margin-right:12px}
 .jea i{font-style:normal;color:var(--lantern);font-weight:600}
@@ -295,6 +303,7 @@ footer a:hover{color:var(--lantern)}
       <h2 id="cname"></h2>
       <p class="meta" id="cmeta"></p>
       <p class="jea" id="cjea"></p>
+      <p class="dft-note" id="cdraft" hidden>这条线目前是粗稿，细节还没逐条核对，仅供参考。</p>
       <ul class="topics" id="ctopics"></ul>
       <div id="ctip" style="margin-top:10px"></div>
     </section>
@@ -436,7 +445,7 @@ function buildRoster(){
       return `<li class="char ${st.cls}" ${v}>
         <button data-i="${i}" aria-current="${!onHome && i===cur}">
           ${badge}
-          <span class="full">${esc(c.name)}</span>
+          <span class="full">${esc(c.name)}${c.draft ? `<span class="dft">粗稿</span>` : ""}</span>
           <span class="prog">${st.text}</span>
         </button></li>`;
     }).join("");
@@ -511,8 +520,9 @@ function renderHome(){
     done += doneOf(c.id).size;
     if (c.steps.length) ready++;
   }
+  const drafts = CHARS.filter(c => c.draft).length;
   el("homeStat").innerHTML = `
-    <span><b>${ready}</b>/ ${CHARS.length} 位角色已整理</span>
+    <span><b>${ready}</b>/ ${CHARS.length} 位角色已整理${drafts ? `（其中 ${drafts} 位是粗稿）` : ""}</span>
     <span><b>${done}</b>/ ${total} 条已勾选</span>
     <span><b>${DATA.schools.length}</b>所学院</span>`;
 
@@ -526,7 +536,7 @@ function renderHome(){
              onerror="this.parentNode.textContent='${esc(label)}'"></span>`
         : `<span class="av">${esc(label)}</span>`;
       return `<li class="${st.cls}"><button data-i="${i}">
-          ${av}<span class="nm">${esc(c.name)}</span>
+          ${av}<span class="nm">${esc(c.name)}${c.draft ? `<span class="dft">粗稿</span>` : ""}</span>
           <span class="st">${st.text}</span>
         </button></li>`;
     }).join("");
@@ -551,7 +561,8 @@ function render(){
 
   const c = CHARS[cur], done = doneOf(c.id);
   document.title = c.name + " · 学院祭的王子们全角色攻略";
-  el("cname").textContent = c.name;
+  el("cname").innerHTML = esc(c.name) + (c.draft ? ` <span class="dft">粗稿</span>` : "");
+  el("cdraft").hidden = !c.draft;
   const empty = !c.steps.length;
   el("cmeta").textContent = [
     c.school,
